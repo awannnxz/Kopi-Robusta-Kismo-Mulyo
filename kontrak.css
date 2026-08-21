@@ -1,0 +1,218 @@
+/* ============================================================
+   kontrak.css — Khusus halaman kontrak.html
+   ============================================================ */
+
+/* ── KOP SURAT ── */
+.kop-surat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 2px;
+}
+.kop-logo {
+  flex-shrink: 0;
+  text-align: center;
+}
+.kop-logo img {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  display: block;
+}
+.kop-appoli-sub {
+  font-size: 9px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+.kop-tengah {
+  flex: 1;
+  text-align: center;
+  line-height: 1.5;
+}
+.kop-nama {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+}
+.kop-full {
+  font-size: 12px;
+  color: #000;
+}
+.kop-alamat {
+  font-size: 11px;
+  color: #000;
+  margin-top: 2px;
+}
+.kop-garis {
+  border-top: 2px solid #000;
+  margin: 6px 0 14px;
+}
+
+/* ── JUDUL FORM ── */
+.form-nomor {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+}
+.form-sub {
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 4px;
+}
+.form-manajer {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 4px;
+}
+.form-dengan {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+/* ── IDENTITAS ── */
+.tbl-identitas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.tbl-identitas td {
+  padding: 4px 6px;
+  color: #000;
+  vertical-align: middle;
+}
+.tbl-identitas .td-label {
+  width: 130px;
+  font-weight: normal;
+}
+.tbl-identitas .td-titik {
+  width: 14px;
+  font-weight: bold;
+}
+.tbl-identitas input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  width: 100%;
+  padding: 1px 4px;
+  background: transparent;
+  color: #000;
+}
+.tbl-identitas .inp-short {
+  width: 70px;
+}
+
+/* ── GARIS TIPIS ── */
+.garis-tipis {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 10px 0;
+}
+
+/* ── ISI PERJANJIAN ── */
+.sub-judul {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin: 10px 0 6px;
+}
+.daftar-isi {
+  padding-left: 22px;
+  margin-bottom: 10px;
+}
+.daftar-isi li {
+  font-size: 12px;
+  color: #000;
+  line-height: 1.7;
+  margin-bottom: 4px;
+  text-align: justify;
+}
+
+/* ── PENUTUP ── */
+.penutup {
+  font-size: 12px;
+  color: #000;
+  line-height: 1.7;
+  text-align: justify;
+  margin: 10px 0 16px;
+}
+
+/* ── TANDA TANGAN ── */
+.ttd-area {
+  margin-top: 20px;
+}
+.ttd-kota {
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ttd-kota input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  width: 180px;
+  background: transparent;
+  color: #000;
+}
+.ttd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.ttd-col {
+  text-align: center;
+}
+.ttd-jabatan {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 56px;
+}
+.ttd-garis {
+  font-size: 12px;
+  color: #000;
+  padding-top: 4px;
+}
+
+/* ── PRINT KERTAS F4 (21cm x 33cm) ── */
+@media print {
+  @page {
+    size: 21cm 33cm;
+    margin: 1.25cm 1.25cm;
+  }
+
+  .sidebar, .topbar, .btn-row,
+  .panel-head, .panel-daftar,
+  .alert-success { display: none !important; }
+
+  body    { display: block !important; background: #fff !important; }
+  .main   { margin-left: 0 !important; }
+  .content { padding: 0 !important; margin: 0 !important; }
+
+  .panel      { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 0 !important; }
+
+  * { color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  input {
+    border: none !important;
+    background: transparent !important;
+  }
+}

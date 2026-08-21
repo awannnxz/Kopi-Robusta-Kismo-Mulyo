@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pertanian Indonesia</title>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-icon">
+      <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png"
+           style="width:40px;height:40px;object-fit:contain;display:block;" alt="Logo APPOLI"/>
+    </div>
+    <div>
+      <div class="logo-name">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+      <div class="logo-sub">Internal Control System Digital (ICS-D)</div>
+    </div>
+  </div>
+
+  <!-- Tombol hamburger, cuma muncul di layar kecil -->
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Buka menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home"    class="active" id="nav-home"    onclick="closeNav()">HOME</a>
+    <a href="#tentang" id="nav-tentang"                onclick="closeNav()">TENTANG</a>
+    <a href="#produk"  id="nav-produk"                 onclick="closeNav()">PRODUK</a>
+    <a href="#contact" id="nav-contact"                onclick="closeNav()">CONTACT</a>
+    <a href="Login2.html" class="btn-login-nav">LOGIN</a>
+  </div>
+</nav>
+
+<!-- ══ HOME ══ -->
+<section id="home">
+  <img class="home-bg-img" src="Gambar2/kopi.jpeg" alt="Background"/>
+  <div class="home-overlay"></div>
+  <div class="hero-logos">
+    <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo 1"/>
+    <img src="Gambar2/Logo UTP.png" alt="Logo 2"/>
+    <img src="Gambar2/Primary_Vertikal-Logo.png" alt="Logo 3"/>
+  </div>
+  <div class="hero-title">Internal Control System Digital<br>(ICS-D)</div>
+  <div class="hero-abbr">(KELOMPOK TANI KOPI "KISMO MULYO")</div>
+  <p class="hero-desc">
+    Platform digital terpadu untuk pengimputan data daan pengendalian mutu di tingkat kelompok tani.
+  </p>
+  <a href="#tentang" class="btn-info">Info Selengkapnya</a>
+</section>
+
+<!-- ══ TENTANG ══ -->
+<section id="tentang">
+  <div class="tentang-grid">
+    <div>
+      <img src="Gambar2/kopi.jpeg" class="tentang-img" alt="Kopi"/>
+    </div>
+    <div class="tentang-text">
+      <div class="sec-label">Tentang Kami</div>
+      <div class="sec-title">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+      <div class="sec-divider"></div>
+      <p>
+        KELOMPOK TANI "KISMO MULYO", Berlokasi di Desa Kwangsan, Kecamatan Jumangpolo, Kabupaten Karanganyar, menjadi wadah kerjasama, meningkatkan hasil panen kopi jenis Robusta, memperkuat posisi tawar harga jual, serta memperluas akses pasar 
+        dan bagi para petani kopi yang mendukung. Dengan menerapkan praktik dengan konsep pertanian hijau (green agriculture) dan ekonomi hijau (green economy) bertujuan untuk menerapkan praktik budidaya kopi yang ramah lingkungan,
+        menjadi kelestarian ekosistem hutan, serta meningkatkan kesejahteraan ekonomi petani secara berkelanjutan. 
+      </p>
+      <div class="stats-row">
+        <div class="stat-box"><div class="snum">1.284</div><div class="slbl">Petani Terdaftar</div></div>
+        <div class="stat-box"><div class="snum">248</div><div class="slbl">Desa Aktif</div></div>
+        <div class="stat-box"><div class="snum">36</div><div class="slbl">Kecamatan</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUK ══ -->
+<section id="produk">
+  <div class="sec-label">Komoditas Unggulan</div>
+  <div class="sec-title">Produk Pertanian</div>
+  <div class="sec-divider"></div>
+
+  <div class="produk-grid">
+    <div class="produk-card">
+      <img src="Gambar2/IMG_20260816_231453.jpg" alt="Beras"/>
+      <div class="pc-body">
+        <div class="pc-name">Kopi Robusta</div>
+        <div class="pc-desc">Kopi Robusta yang diproduksi dengan sistem ramah lingkungan dengan konsep green agriculture.</div>
+        <button class="btn-beli" onclick="beli('Beras Putih', 'Rp 18.000/kg')">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="sec-label">Hubungi Kami</div>
+  <div class="sec-title">Contact</div>
+  <div class="sec-divider"></div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p>Untuk pertanyaan, saran, atau bantuan teknis terkait sistem monitoring pertanian, silakan hubungi kami melalui informasi di bawah ini.</p>
+      <div class="contact-item"><span class="ci">📍</span><div class="ct"><strong>Alamat</strong>Dk. Jumapuro, Kwangsan, Jumapolo, Karanganyar</div></div>
+      <div class="contact-item"><span class="ci">📞</span><div class="ct"><strong>Telepon</strong>-</div></div>
+      <div class="contact-item"><span class="ci">📧</span><div class="ct"><strong>Email</strong></div></div>
+      <div class="contact-item"><span class="ci">🕐</span><div class="ct"><strong>Jam Operasional</strong>Senin – Jumat: 08.00 – 17.00 WIB</div></div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <input type="text" placeholder="Nama Lengkap"/>
+        <input type="email" placeholder="Email"/>
+        <input type="text" placeholder="Subjek"/>
+        <textarea placeholder="Pesan Anda..."></textarea>
+        <button class="btn-send" onclick="sendMsg()">KIRIM PESAN</button>
+        <div class="alert-ok" id="alertMsg">✅ Pesan berhasil dikirim!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 KELOMPOK TANI KOPI "KISMO MULYO" · MANAJEMEN MUTU BERBASIS ELEKTRONIK (MMBE)
+</footer>
+
+<script>
+  // Nomor WhatsApp APPOLI (format internasional, tanpa tanda + / spasi)
+  const NOMOR_WA_APPOLI = '6285326991206';
+
+  function beli(namaProduk, harga) {
+    const pesan =
+      `Halo APPOLI, saya ingin bertanya:\n\n` +
+      `Apakah produk *${namaProduk}* (${harga}) masih tersedia / ready?\n\n` +
+      `Terima kasih.`;
+    const url = `https://wa.me/${NOMOR_WA_APPOLI}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  }
+
+  // ── Menu hamburger untuk HP/tablet ──
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('navToggle').classList.remove('open');
+  }
+</script>
+</body>
+</html>

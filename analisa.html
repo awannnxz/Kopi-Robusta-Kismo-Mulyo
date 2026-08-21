@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analisa Risiko — Aliansi Padi Dan Polowijo Organik Boyolali</title>
+  <link rel="stylesheet" href="sidebar.css"/>
+  <link rel="stylesheet" href="analisa.css"/>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png"
+             style="width:42px;height:42px;object-fit:contain;" alt="padi"/>
+      </div>
+      <div>
+        <div class="logo-name">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+        <div class="logo-sub">Internal Control System Digital (ICS-D)</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="av">A</div>
+    <div>
+      <div class="uname" id="sbUser">Tani</div>
+      <div class="urole">Petani</div>
+    </div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-section-lbl">Pengimputan Data</div>
+    <a class="sb-item"           href="kontrak.html">      <span class="ic">1.</span> Kontrak</a>
+    <a class="sb-item"           href="petalahan.html">   <span class="ic">2.</span> Peta Lahan Petani</a>
+    <a class="sb-item"           href="pendataan.html">    <span class="ic">3.</span> Pendataan</a>
+    <a class="sb-item"           href="catatanusaha.html"><span class="ic">4.</span> Catatan Usaha</a>
+    <a class="sb-item"           href="inspeksi.html">     <span class="ic">5.</span> Inspeksi</a>
+    <div class="sb-item active" onclick="toggleSub(this,'sub-kelompok')">
+      <span class="ic">6.</span> Nama Kelompok
+      <span style="margin-left:auto;font-size:11px;" id="arr-kelompok">&#9660;</span>
+    </div>
+    <div class="sb-sub open" id="sub-kelompok">
+      <a class="sb-sub-item"        href="petalahan.html">Sketsa Lahan</a>
+      <a class="sb-sub-item active" href="analisa.html">Analisa Risiko</a>
+    </div>
+  </div>
+  <div class="sb-footer">
+    <button class="btn-logout" onclick="logout()">Keluar</button>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+  <div class="topbar">
+    <h1>Analisa Risiko Kelompok</h1>
+    <div class="tb-right">
+      <span class="tb-date" id="tbDate"></span>
+      <a href="index.html" class="tb-back">Beranda</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button class="btn-secondary" onclick="resetForm()">Reset</button>
+      <button class="btn-secondary" onclick="window.print()">Cetak</button>
+      <button class="btn-primary"   onclick="simpan()">Simpan</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="form-analisa">
+
+          <!-- KOP -->
+          <div class="kop-surat" style="display:flex;align-items:flex-start;gap:14px;padding-bottom:8px;margin-bottom:2px;">
+            <div class="kop-logo" style="flex-shrink:0;width:56px;text-align:center;">
+              <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo APPOLI"
+                   style="width:56px;height:56px;max-width:56px;max-height:56px;object-fit:contain;display:block;"/>
+            </div>
+            <div class="kop-tengah" style="flex:1;text-align:center;line-height:1.5;">
+              <div class="kop-nama">Internal Control System Digital (ICS-D)</div>
+              <div class="kop-full">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+              <div class="kop-alamat">
+                Dk. Jumapuro, Kwangsan, Jumapolo, Karanganyar<br>
+                Tel: - &nbsp; Email: -
+              </div>
+            </div>
+          </div>
+          <div class="kop-garis" style="border-top:2px solid #000;margin:6px 0 10px;"></div>
+
+          <!-- JUDUL -->
+          <div class="form-judul"> &nbsp; ANALISIS RESIKO KELOMPOK</div>
+
+          <!-- TABEL ANALISA RISIKO -->
+          <table class="tbl-risiko">
+            <thead>
+              <tr>
+                <th rowspan="2" style="width:50%;text-align:center;">Kriteria Resiko</th>
+                <th rowspan="2" style="width:15%;">Situasi yang dihadapi</th>
+                <th colspan="3" style="width:35%;">Nilai Resiko Kontaminasi</th>
+              </tr>
+              <tr>
+                <th style="width:10%;">T</th>
+                <th style="width:10%;">S</th>
+                <th style="width:10%;">R</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- KONTAMINASI -->
+
+              <tr>
+                <td>1. Apakah semua lahan pertanian yang dikelola oleh petani dinyatakan dan diketahui ICS (termasuk juga bidang milik anggota keluarga yang dikelola oleh petani tersebut)?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r1" value="T"/></td>
+                <td class="center"><input type="radio" name="r1" value="S"/></td>
+                <td class="center"><input type="radio" name="r1" value="R"/></td>
+              </tr>
+              <tr>
+                <td>2. Apakah ada resiko penyewaan dan pengembalian lahan organik yang tak terkontrol?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r2" value="T"/></td>
+                <td class="center"><input type="radio" name="r2" value="S"/></td>
+                <td class="center"><input type="radio" name="r2" value="R"/></td>
+              </tr>
+              <tr>
+                <td>3. Apakah nama lahan / hak kepemilikan / hak sewa cukup jelas dan dapatkah petani mengambil keputusan yang diperlukan untuk pertanian organik?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r3" value="T"/></td>
+                <td class="center"><input type="radio" name="r3" value="S"/></td>
+                <td class="center"><input type="radio" name="r3" value="R"/></td>
+              </tr>
+              <tr>
+                <td>4. Apakah petani melakukan rotasi tanaman saat merubah bidang lahan garapan? (penanaman bergilir)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r4" value="T"/></td>
+                <td class="center"><input type="radio" name="r4" value="S"/></td>
+                <td class="center"><input type="radio" name="r4" value="R"/></td>
+              </tr>
+              <tr>
+                <td>5. Apakah produk terlarang (pestisida, herbisida, dan pupuk buatan) mudah dijangkau oleh petani? (di daerah, di desa)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r5" value="T"/></td>
+                <td class="center"><input type="radio" name="r5" value="S"/></td>
+                <td class="center"><input type="radio" name="r5" value="R"/></td>
+              </tr>
+              <tr>
+                <td>6. Apakah ada program yang mempromosikan bahan agrokimia?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r6" value="T"/></td>
+                <td class="center"><input type="radio" name="r6" value="S"/></td>
+                <td class="center"><input type="radio" name="r6" value="R"/></td>
+              </tr>
+              <tr>
+                <td>7. Apakah asupan "organik" didistribusikan oleh pemerintah?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r7" value="T"/></td>
+                <td class="center"><input type="radio" name="r7" value="S"/></td>
+                <td class="center"><input type="radio" name="r7" value="R"/></td>
+              </tr>
+              <tr>
+                <td>8. Apakah pelayanan penyuluhan pemerintah menganjurkan penggunaan agrokimia?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r8" value="T"/></td>
+                <td class="center"><input type="radio" name="r8" value="S"/></td>
+                <td class="center"><input type="radio" name="r8" value="R"/></td>
+              </tr>
+              <tr>
+                <td>9. Apakah tanaman organik umumnya ditanam tanpa / dengan hanya asupan yang diijinkan (pestisida, herbisida, dan pupuk buatan) di wilayah proyek?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r9" value="T"/></td>
+                <td class="center"><input type="radio" name="r9" value="S"/></td>
+                <td class="center"><input type="radio" name="r9" value="R"/></td>
+              </tr>
+              <tr>
+                <td>10. Jika ya, apakah tanaman organik akan ditanam secara organik jika harganya meningkat drastis?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r10" value="T"/></td>
+                <td class="center"><input type="radio" name="r10" value="S"/></td>
+                <td class="center"><input type="radio" name="r10" value="R"/></td>
+              </tr>
+              <tr>
+                <td>11. Dapatkah petani dalam proyek organik tertarik untuk menggunakan bahan kimia karena kurang yakin pada metode organik / metode organik tidak berjalan dengan baik?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r11" value="T"/></td>
+                <td class="center"><input type="radio" name="r11" value="S"/></td>
+                <td class="center"><input type="radio" name="r11" value="R"/></td>
+              </tr>
+              <tr>
+                <td>12. Apakah petani menanam tanaman lain yang mudah diserang hama atau penyakit yang sulit untuk dikelola secara organik? (misal, tomat, kepulaga)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r12" value="T"/></td>
+                <td class="center"><input type="radio" name="r12" value="S"/></td>
+                <td class="center"><input type="radio" name="r12" value="R"/></td>
+              </tr>
+              <tr>
+                <td>13. Apakah ada produsen dalam program organik yang menanami tanaman panen konvensional untuk penjualan lokal atau konsumsi rumah tangga dengan menggunakan produk terlarang?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r13" value="T"/></td>
+                <td class="center"><input type="radio" name="r13" value="S"/></td>
+                <td class="center"><input type="radio" name="r13" value="R"/></td>
+              </tr>
+              <tr>
+                <td>14. Apakah tanaman konvensional ini berpotensi tumbuh di lahan pertanian organik? (misal, diselingi dengan pisang, atau dalam kebon bibit pisang)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r14" value="T"/></td>
+                <td class="center"><input type="radio" name="r14" value="S"/></td>
+                <td class="center"><input type="radio" name="r14" value="R"/></td>
+              </tr>
+              <tr>
+                <td>15. Apakah produsen memahami metode produksi organik yang tepat dan yakin bahwa pertanian organik cocok untuk panenan mereka?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r15" value="T"/></td>
+                <td class="center"><input type="radio" name="r15" value="S"/></td>
+                <td class="center"><input type="radio" name="r15" value="R"/></td>
+              </tr>
+              <tr>
+                <td>16. Apakah peralatan penyemprot digunakan dalam perawatan konvensional dan organik?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r16" value="T"/></td>
+                <td class="center"><input type="radio" name="r16" value="S"/></td>
+                <td class="center"><input type="radio" name="r16" value="R"/></td>
+              </tr>
+              <tr>
+                <td>17. Mungkinkah lahan pertanian organik terkontaminasi oleh bahan-bahan kimia dari lahan pertanian konvensional yang berada di dekatnya?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r17" value="T"/></td>
+                <td class="center"><input type="radio" name="r17" value="S"/></td>
+                <td class="center"><input type="radio" name="r17" value="R"/></td>
+              </tr>
+              <tr>
+                <td>18. Dapatkah lahan pertanian organik terkontaminasi oleh irigasi air atau tanah dari lahan pertanian konvensional?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r18" value="T"/></td>
+                <td class="center"><input type="radio" name="r18" value="S"/></td>
+                <td class="center"><input type="radio" name="r18" value="R"/></td>
+              </tr>
+              <tr>
+                <td>19. Apakah petani menyimpan bahan agrokimia dan adakah resiko kemungkinan produk yang bersertifikat terkontaminasi?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r19" value="T"/></td>
+                <td class="center"><input type="radio" name="r19" value="S"/></td>
+                <td class="center"><input type="radio" name="r19" value="R"/></td>
+              </tr>
+              <tr>
+                <td>20. Apakah ada sumber-sumber kontaminasi di daerah tersebut? (industri, tambang, jalan raya, dll)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r20" value="T"/></td>
+                <td class="center"><input type="radio" name="r20" value="S"/></td>
+                <td class="center"><input type="radio" name="r20" value="R"/></td>
+              </tr>
+              <tr>
+                <td>21. Apakah ada program untuk mencegah wabah atau epidemi? (seperti, malaria)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r21" value="T"/></td>
+                <td class="center"><input type="radio" name="r21" value="S"/></td>
+                <td class="center"><input type="radio" name="r21" value="R"/></td>
+              </tr>
+              <tr>
+                <td>22. Apakah bibit GMO digunakan di daerah tersebut? (termasuk bibit untuk tumpang sari)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r22" value="T"/></td>
+                <td class="center"><input type="radio" name="r22" value="S"/></td>
+                <td class="center"><input type="radio" name="r22" value="R"/></td>
+              </tr>
+              <tr>
+                <td>23. Apakah petani melakukan pembasmian hama selama panen?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r23" value="T"/></td>
+                <td class="center"><input type="radio" name="r23" value="S"/></td>
+                <td class="center"><input type="radio" name="r23" value="R"/></td>
+              </tr>
+
+              <!-- KONTROL INTERNAL -->
+              <tr class="kategori"><td colspan="5">Kontrol Internal</td></tr>
+              <tr>
+                <td>24. Apakah jarak antara kelompok regional dapat dikelola untuk kontrol internal dan pembelian produk?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r24" value="T"/></td>
+                <td class="center"><input type="radio" name="r24" value="S"/></td>
+                <td class="center"><input type="radio" name="r24" value="R"/></td>
+              </tr>
+              <tr>
+                <td>25. Apakah manajer organik dan stafnya memiliki infrastruktur yang dibutuhkan untuk membantu kerja kontrol internal?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r25" value="T"/></td>
+                <td class="center"><input type="radio" name="r25" value="S"/></td>
+                <td class="center"><input type="radio" name="r25" value="R"/></td>
+              </tr>
+              <tr>
+                <td>26. Sudahkah dipastikan adanya inspektor internal yang cakap untuk melakukan kerja pemeriksaan?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r26" value="T"/></td>
+                <td class="center"><input type="radio" name="r26" value="S"/></td>
+                <td class="center"><input type="radio" name="r26" value="R"/></td>
+              </tr>
+              <tr>
+                <td>27. Apakah tanggung jawab sudah ditetapkan sedemikian rupa sehingga konflik kepentingan dapat dihindarkan?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r27" value="T"/></td>
+                <td class="center"><input type="radio" name="r27" value="S"/></td>
+                <td class="center"><input type="radio" name="r27" value="R"/></td>
+              </tr>
+
+              <!-- PEMBELIAN, TRANSPORT, PENYIMPANAN -->
+              <tr class="kategori"><td colspan="5">Pembelian, Transport, Penyimpanan, Pengolahan</td></tr>
+              <tr>
+                <td>28. Apakah ada perbedaan harga yang cukup besar antara produk organik dan konvensional? (resiko bahwa petani organik membeli dari tetangga yang konvensional dan menjual produknya sebagai organik)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r28" value="T"/></td>
+                <td class="center"><input type="radio" name="r28" value="S"/></td>
+                <td class="center"><input type="radio" name="r28" value="R"/></td>
+              </tr>
+              <tr>
+                <td>29. Apakah sudah jelas bahwa pusat pembelian hanya membeli produk dari petani organik bersertifikat, dan jika perlu memisahkan kualitas yang berbeda? (organik dalam transisi, konvensional)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r29" value="T"/></td>
+                <td class="center"><input type="radio" name="r29" value="S"/></td>
+                <td class="center"><input type="radio" name="r29" value="R"/></td>
+              </tr>
+              <tr>
+                <td>30. Apakah personel pembelian mendapat keuntungan dari pembelian dari petani yang tidak disertifikasi dan mungkinkah mereka tertarik untuk melakukannya?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r30" value="T"/></td>
+                <td class="center"><input type="radio" name="r30" value="S"/></td>
+                <td class="center"><input type="radio" name="r30" value="R"/></td>
+              </tr>
+              <tr>
+                <td>31. Apakah sudah pasti tidak ada kemungkinan bercampurnya produk dengan kualitas yang berbeda di pusat pembelian dan gudang?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r31" value="T"/></td>
+                <td class="center"><input type="radio" name="r31" value="S"/></td>
+                <td class="center"><input type="radio" name="r31" value="R"/></td>
+              </tr>
+              <tr>
+                <td>32. Apakah semua orang yang bertanggung jawab dalam penanganan produk organik telah terlatih dengan persyaratan yang khusus?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r32" value="T"/></td>
+                <td class="center"><input type="radio" name="r32" value="S"/></td>
+                <td class="center"><input type="radio" name="r32" value="R"/></td>
+              </tr>
+              <tr>
+                <td>33. Apakah tindakan yang telah direncanakan dapat untuk memastikan pemisahan antara produk organik dan non-organik selama pengolahan?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r33" value="T"/></td>
+                <td class="center"><input type="radio" name="r33" value="S"/></td>
+                <td class="center"><input type="radio" name="r33" value="R"/></td>
+              </tr>
+              <tr>
+                <td>34. Apakah semua bahan-bahan dan pelengkap yang akan digunakan selama pengolahan diketahui dan sudahkah dikonfirmasikan dengan lembaga sertifikasi bahwa bahan-bahan tersebut tidak bermasalah?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r34" value="T"/></td>
+                <td class="center"><input type="radio" name="r34" value="S"/></td>
+                <td class="center"><input type="radio" name="r34" value="R"/></td>
+              </tr>
+              <tr>
+                <td>35. Dapatkah dihindari bahwa produk organik yang disimpan dapat terkontaminasi oleh bahan agrokimia? (pembasmian hama selama penyimpanan)</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r35" value="T"/></td>
+                <td class="center"><input type="radio" name="r35" value="S"/></td>
+                <td class="center"><input type="radio" name="r35" value="R"/></td>
+              </tr>
+              <tr>
+                <td>36. Perlengkapan transport dan gudang tidak dirawat dengan produk yang tak diijinkan (meskipun bukan kontainer untuk ekspor)?</td>
+                <td><input type="text"/></td>
+                <td class="center"><input type="radio" name="r36" value="T"/></td>
+                <td class="center"><input type="radio" name="r36" value="S"/></td>
+                <td class="center"><input type="radio" name="r36" value="R"/></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <!-- KETERANGAN -->
+          <div class="keterangan-box" style="text-align:center;">
+            <strong>Tingkat Resiko: T= Resiko Tinggi; S= Resiko Sedang; R= Resiko Rendah</strong><br>
+            <strong>Keterangan:</strong>
+          </div>
+
+        </div><!-- /form-analisa -->
+        <div class="alert-success" id="alertRisiko" style="margin-top:12px;">Data analisa risiko berhasil disimpan!</div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script src="sidebar.js"></script>
+<script>
+  function simpan() {
+    showAlert('alertRisiko');
+  }
+  function resetForm() {
+    if (!confirm('Reset semua isian?')) return;
+    document.querySelectorAll('.form-analisa input[type="text"]').forEach(el => el.value = '');
+    document.querySelectorAll('.form-analisa input[type="radio"]').forEach(el => el.checked = false);
+  }
+</script>
+
+</body>
+</html>

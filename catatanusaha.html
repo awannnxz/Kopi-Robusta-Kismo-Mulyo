@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catatan Usaha — Aliansi Padi Dan Polowijo Organik Boyolali</title>
+  <link rel="stylesheet" href="sidebar.css"/>
+  <link rel="stylesheet" href="catatanusaha.css"/>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png"
+             style="width:42px;height:42px;object-fit:contain;" alt="padi"/>
+      </div>
+      <div>
+        <div class="logo-name">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+        <div class="logo-sub">Internal Control System Digital (ICS-D)</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="av">A</div>
+    <div>
+      <div class="uname" id="sbUser">Tani</div>
+      <div class="urole">Petani</div>
+    </div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-section-lbl">Pengimputan Data</div>
+    <a class="sb-item"           href="kontrak.html">      <span class="ic">1.</span> Kontrak</a>
+    <a class="sb-item"           href="petalahan.html">   <span class="ic">2.</span> Peta Lahan Petani</a>
+    <a class="sb-item"           href="pendataan.html">    <span class="ic">3.</span> Pendataan</a>
+    <a class="sb-item active"    href="catatanusaha.html"><span class="ic">4.</span> Catatan Usaha</a>
+    <a class="sb-item"           href="inspeksi.html">     <span class="ic">5.</span> Inspeksi</a>
+    <div class="sb-item" onclick="toggleSub(this,'sub-kelompok')">
+      <span class="ic">6.</span> Nama Kelompok
+      <span style="margin-left:auto;font-size:11px;" id="arr-kelompok">&#9658;</span>
+    </div>
+    <div class="sb-sub" id="sub-kelompok">
+      <a class="sb-sub-item" href="petalahan.html">Sketsa Lahan</a>
+      <a class="sb-sub-item" href="analisa.html">Analisa Risiko</a>
+    </div>
+  </div>
+  <div class="sb-footer">
+    <button class="btn-logout" onclick="logout()">Keluar</button>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+  <div class="topbar">
+    <h1>Buku Catatan Anggota</h1>
+    <div class="tb-right">
+      <span class="tb-date" id="tbDate"></span>
+      <a href="Index2.html" class="tb-back">Beranda</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button class="btn-secondary" onclick="resetForm()">Reset</button>
+      <button class="btn-secondary" onclick="window.print()">Cetak</button>
+      <button class="btn-primary"   onclick="simpan()">Simpan</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="form-catatan">
+
+          <!-- KOP -->
+          <div class="kop-surat">
+            <div class="kop-logo">
+              <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo APPOLI"/>
+            </div>
+            <div class="kop-tengah">
+              <div class="kop-nama">Internal Control System Digital (ICS-D)</div>
+              <div class="kop-full">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+              <div class="kop-alamat">
+                Dk. Jumapuro, Kwangsan, Jumapolo, Karanganyar<br>
+                Tel: - &nbsp; Email: -
+              </div>
+            </div>
+          </div>
+          <div class="kop-garis"></div>
+
+          <!-- JUDUL -->
+          <div class="form-judul"> &nbsp; BUKU CATATAN KELOMPOK TANI KOPI "KISMO MULYO" KARANGANYAR</div>
+
+          <!-- IDENTITAS -->
+          <table class="tbl-identitas">
+            <tr>
+              <td class="id-label">Nama Petani</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_nama"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Kode Petani</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_kode"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Kelompok Tani</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_kelompok"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Alamat</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_alamat"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Varietas</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_varietas"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Luas Lahan</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_luas"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Musim Tanam</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_musim"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Status Lahan</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="c_status"/></td>
+            </tr>
+          </table>
+
+          <!-- TABEL CATATAN -->
+          <table class="tbl-catatan">
+            <thead>
+              <tr>
+                <th class="col-no">NO</th>
+                <th class="col-uraian">URAIAN</th>
+                <th class="col-tgl">TANGGAL</th>
+                <th class="col-vol">VOLUME</th>
+                <th class="col-hrg">HARGA</th>
+                <th class="col-tot">TOTAL</th>
+                <th class="col-ket">KETERANGAN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 1-7: baris biasa -->
+              <tr><td class="no">1</td><td>Sewa lahan/pajak tanah</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">2</td><td>Kebutuhan benih</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">3</td><td>Membuat Lahan Semai</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">4</td><td>Tabur Benih di Lahan Semai</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">5</td><td>Olah lahan tanam</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">6</td><td>Daut</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td class="no">7</td><td>Tanam</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 8: Pemupukan -->
+              <tr><td class="no">8</td><td>Pemupukan</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td></td><td class="indent">1. Pupuk Organk Padat</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">2. Pupuk Organik Cair</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">3. Pupuk Kimia</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent2">- Urea</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent2">- TSP</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent2">- Phonska</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent2">- KCL</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent2">- Dll</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 9: Tenaga Pemupukan -->
+              <tr><td class="no">9</td><td>Tenaga Pemupukan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Pupuk ke-1</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Pupuk ke-2</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Pupuk cair</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 10: Pengairan -->
+              <tr><td class="no">10</td><td>Pengairan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 12: Perawatan Tanaman -->
+              <tr><td class="no">12</td><td>Perawatan Tanaman</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Matun/ penyiangan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Herbisida</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Tenaga Penyemprotan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 13: Pencegahan Hama -->
+              <tr><td class="no">13</td><td>Pencegahan Hama dan Penyakit</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Agentia Hayati/ organik</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Pestisida Kimia</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Tenaga Penyemprotan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 14: Panen -->
+              <tr><td class="no">14</td><td>Panen</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td></td><td class="indent">Sak Kemasan</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- 15: Transportasi -->
+              <tr><td class="no">15</td><td>Transportasi</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+              <!-- Total -->
+              <tr class="row-total"><td></td><td>Total Biaya</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr class="row-putih"><td></td><td>Total Panen</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr class="row-total"><td></td><td>Margin</td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+
+            </tbody>
+          </table>
+
+        </div><!-- /form-catatan -->
+        <div class="alert-success" id="alertCatatan" style="margin-top:12px;">Data catatan berhasil disimpan!</div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script src="sidebar.js"></script>
+<script>
+  function simpan() {
+    const nama = document.getElementById('c_nama').value.trim();
+    if (!nama) { alert('Nama Petani wajib diisi!'); return; }
+    showAlert('alertCatatan');
+  }
+  function resetForm() {
+    if (!confirm('Reset semua isian?')) return;
+    document.querySelectorAll('.form-catatan input[type="text"]').forEach(el => el.value = '');
+  }
+</script>
+
+</body>
+</html>

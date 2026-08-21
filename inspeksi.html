@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inspeksi — Aliansi Padi Dan Polowijo Organik Boyolali</title>
+  <link rel="stylesheet" href="sidebar.css"/>
+  <link rel="stylesheet" href="inspeksi.css"/>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png"
+             style="width:42px;height:42px;object-fit:contain;" alt="padi"/>
+      </div>
+      <div>
+        <div class="logo-name">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+        <div class="logo-sub">Internal Control System Digital (ICS-D)</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="av">A</div>
+    <div>
+      <div class="uname" id="sbUser">Tani</div>
+      <div class="urole">Petani</div>
+    </div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-section-lbl">Pengimputan Data</div>
+    <a class="sb-item"           href="kontrak.html">      <span class="ic">1.</span> Kontrak</a>
+    <a class="sb-item"           href="petalahan.html">   <span class="ic">2.</span> Peta Lahan Petani</a>
+    <a class="sb-item"           href="pendataan.html">    <span class="ic">3.</span> Pendataan</a>
+    <a class="sb-item"           href="catatanusaha.html"><span class="ic">4.</span> Catatan Usaha</a>
+    <a class="sb-item active"    href="inspeksi.html">     <span class="ic">5.</span> Inspeksi</a>
+    <div class="sb-item" onclick="toggleSub(this,'sub-kelompok')">
+      <span class="ic">6.</span> Nama Kelompok
+      <span style="margin-left:auto;font-size:11px;" id="arr-kelompok">&#9658;</span>
+    </div>
+    <div class="sb-sub" id="sub-kelompok">
+      <a class="sb-sub-item" href="petalahan.html">Sketsa Lahan</a>
+      <a class="sb-sub-item" href="analisa.html">Analisa Risiko</a>
+    </div>
+  </div>
+  <div class="sb-footer">
+    <button class="btn-logout" onclick="logout()">Keluar</button>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+  <div class="topbar">
+    <h1>Formulir Inspeksi Internal</h1>
+    <div class="tb-right">
+      <span class="tb-date" id="tbDate"></span>
+      <a href="index.html" class="tb-back">Beranda</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button class="btn-secondary" onclick="resetForm()">Reset</button>
+      <button class="btn-secondary" onclick="window.print()">Cetak</button>
+      <button class="btn-primary"   onclick="simpan()">Simpan</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="form-inspeksi">
+
+          <!-- KOP -->
+          <div class="kop-surat">
+            <div class="kop-logo">
+              <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo APPOLI"/>
+            </div>
+            <div class="kop-tengah">
+              <div class="kop-nama">Internal Control System Digital (ICS-D)</div>
+              <div class="kop-full">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+              <div class="kop-alamat">
+                Dk. Jumapuro, Kwangsan, Jumapolo, Karanganyar<br>
+                Tel: - &nbsp; Email: -
+              </div>
+            </div>
+          </div>
+          <div class="kop-garis"></div>
+
+          <!-- JUDUL -->
+          <div class="form-judul"> &nbsp; INSPEKSI INTERNAL</div>
+          <div class="form-sub-judul">Formulir Inspeksi Internal</div>
+
+          <!-- HEADER IDENTITAS -->
+          <table class="tbl-header">
+            <tr>
+              <td style="width:60%;">Nama Petani : <input type="text" id="i_petani" style="width:70%;"/></td>
+              <td style="white-space:nowrap;">Inspektor Internal : <input type="text" id="i_inspektor" style="width:50%;"/></td>
+            </tr>
+            <tr>
+              <td>Kode : <input type="text" id="i_kode" style="width:80%;"/></td>
+              <td style="white-space:nowrap;">Tanggal Inspeksi : <input type="text" id="i_tgl" style="width:55%;"/></td>
+            </tr>
+            <tr>
+              <td>Alamat : <input type="text" id="i_alamat" style="width:80%;"/></td>
+              <td style="white-space:nowrap;">Jam Inspeksi : <input type="text" id="i_jam" style="width:60%;"/></td>
+            </tr>
+          </table>
+
+          <div class="note-box">Lingkari atau contreng keterangan yang dipilih</div>
+
+          <!-- A. BIDANG LAHAN -->
+          <table class="tbl-ins">
+            <tr>
+              <td colspan="2" style="font-size:12px;">
+                Bidang lahan, apakah sama dengan tahun lalu dan telah diregistrasi dalam dokumentasi internal?
+              </td>
+              <td style="width:35%;">
+                <div class="radio-row">
+                  <label><input type="radio" name="lahan_st" value="Baru"/> Baru</label>
+                  <label><input type="radio" name="lahan_st" value="Sama"/> Sama</label>
+                  <label><input type="radio" name="lahan_st" value="Penambahan"/> Penambahan</label>
+                  <label><input type="radio" name="lahan_st" value="Pengurangan"/> Pengurangan</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="tbl-ins" id="tblBidangLahan">
+            <thead>
+              <tr>
+                <th style="width:18%;">Bidang lahan</th>
+                <th style="width:8%;">m&#178;</th>
+                <th>Tanaman utama</th>
+                <th>Tanaman selingan</th>
+                <th>Terakhir pemakaian kimia terlarang</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyBidang">
+              <tr><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td></tr>
+              <tr>
+                <td style="font-weight:bold;">Total Lahan m&#178; :</td>
+                <td><input type="text" style="width:90%;"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn-tambah-baris" onclick="tambahBaris()">+ Tambah Baris</button>
+
+          <table class="tbl-ins" style="margin-top:4px;">
+            <tr>
+              <td style="width:65%;">Seluruh usahatani dilahan organik dikelola secara organik (seluruh tanaman)</td>
+              <td>
+                <div class="radio-row">
+                  <label><input type="radio" name="organik_all" value="Ya"/> Ya</label>
+                  <label><input type="radio" name="organik_all" value="Tidak"/> Tidak</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- B. KRITERIA PRODUKSI TERNAK -->
+          <table class="tbl-ins">
+            <thead>
+              <tr>
+                <th class="left" style="width:40%;">Kriteria Produksi Ternak</th>
+                <th>Kondisi diterima</th>
+                <th>Tidak diterima</th>
+                <th>Dasar penerimaan / kondisi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kondisi hewan ternak</td>
+                <td class="center"><input type="checkbox"/></td>
+                <td class="center"><input type="checkbox"/></td>
+                <td><input type="text"/></td>
+              </tr>
+              <tr>
+                <td>Makanan yang diberikan</td>
+                <td class="center"><input type="checkbox"/></td>
+                <td class="center"><input type="checkbox"/></td>
+                <td><input type="text"/></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- C. STATUS LAHAN -->
+          <table class="tbl-ins">
+            <thead>
+              <tr>
+                <th class="left" style="width:40%;">Kriteria</th>
+                <th>Kondisi diterima</th>
+                <th>Tidak diterima</th>
+                <th>Dasar penerimaan / kondisi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Status lahan</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apakah lahan sudah melewati masa konversi</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apakah lahan pertanian organik terpisah dari lahan konvensional</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Konservasi (sistem air, tanah, hutan, dsb)</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Petani terlatih dalam sistem pertanian organik</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apakah ada zona pembatas dan filter yang memadai untuk mengatasi kontaminasi</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+            </tbody>
+          </table>
+
+          <!-- D. MANAJEMEN BENIH -->
+          <table class="tbl-ins">
+            <thead>
+              <tr>
+                <th class="left" style="width:60%;">Kriteria</th>
+                <th>Kondisi diterima</th>
+                <th>Tidak diterima</th>
+                <th>Dasar penerimaan / kondisi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Manajemen Benih</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Dari mana sumber benih</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apakah menanam benih rekayasa genetika</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Persiapan dan pengelolaan</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Pemupukan organik</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Bila kondisi tanaman kritis apakah petani masih menggunakan pupuk kimia</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Pengontrolan rumput liar apakah masih menggunakan herbisida</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Manajemen hama</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Manajemen penyakit</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apabila hama dan penyakit sulit dikendalikan apakah petani masih menggunakan pestisida kimia</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Manajemen pola tanam</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Apakah setiap rotasi tanaman selalu menerapkan budidaya organik</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+            </tbody>
+          </table>
+
+          <!-- E. PASCA PANEN -->
+          <table class="tbl-ins">
+            <thead>
+              <tr>
+                <th class="left" style="width:40%;">Aktivitas</th>
+                <th>Kondisi diterima</th>
+                <th>Tidak diterima</th>
+                <th>Dasar penerimaan / kondisi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Pengolahan produk</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Bagaimana kondisi sak kemasan produk</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+              <tr><td>Penyimpanan dan pengiriman</td><td class="center"><input type="checkbox"/></td><td class="center"><input type="checkbox"/></td><td><input type="text"/></td></tr>
+            </tbody>
+          </table>
+
+          <!-- F. MANAJEMEN RISIKO -->
+          <table class="tbl-ins">
+            <thead>
+              <tr>
+                <th class="left" style="width:35%;">Resiko kontaminasi</th>
+                <th>Rendah</th>
+                <th>Menengah</th>
+                <th>Tinggi</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lahan pertanian non-organik disekitarnya</td>
+                <td class="center"><input type="radio" name="r1" value="Rendah"/></td>
+                <td class="center"><input type="radio" name="r1" value="Menengah"/></td>
+                <td class="center"><input type="radio" name="r1" value="Tinggi"/></td>
+                <td><input type="text"/></td>
+              </tr>
+              <tr>
+                <td>Aktivitas non-organik di lahan sekitar</td>
+                <td class="center"><input type="radio" name="r2" value="Rendah"/></td>
+                <td class="center"><input type="radio" name="r2" value="Menengah"/></td>
+                <td class="center"><input type="radio" name="r2" value="Tinggi"/></td>
+                <td><input type="text"/></td>
+              </tr>
+              <tr>
+                <td>Industri, jalan kendaraan, air limbah, dsb</td>
+                <td class="center"><input type="radio" name="r3" value="Rendah"/></td>
+                <td class="center"><input type="radio" name="r3" value="Menengah"/></td>
+                <td class="center"><input type="radio" name="r3" value="Tinggi"/></td>
+                <td><input type="text"/></td>
+              </tr>
+              <tr>
+                <td colspan="5">Langkah yang diambil untuk mengurangi resiko : <input type="text" style="width:70%;"/></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- G. REKOMENDASI INSPEKTOR -->
+          <table class="tbl-ins">
+            <tbody>
+              <tr>
+                <td style="width:35%;">Pemenuhan kondisi sebelumnya</td>
+                <td>
+                  <div class="radio-row">
+                    <label><input type="radio" name="pem_sblm" value="baik"/> baik</label>
+                    <label><input type="radio" name="pem_sblm" value="sebagian"/> sebagian/diterima</label>
+                    <label><input type="radio" name="pem_sblm" value="hilang"/> hilang/tidak diterima</label>
+                    <label><input type="radio" name="pem_sblm" value="tidakada"/> tidak ada kondisi tahun sebelumnya</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Pemenuhan tahun ini</td>
+                <td>
+                  <div class="radio-row">
+                    <label><input type="radio" name="pem_ini" value="tanpasyarat"/> menyetujui tanpa syarat</label>
+                    <label><input type="radio" name="pem_ini" value="dengansyarat"/> menyetujui dengan syarat</label>
+                    <label><input type="radio" name="pem_ini" value="hilang"/> hilang/tidak diterima</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  Persyaratan (tindakan perbaikan) atau penjelasan :<br/>
+                  <textarea rows="2" style="width:100%;"></textarea>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- TTD INSPEKTOR -->
+          <div class="ttd-grid">
+            <div class="ttd-col">
+              <div style="font-size:12px;text-align:center;margin-bottom:48px;">Petani</div>
+              <div style="font-size:12px;text-align:center;">( ........................................ )</div>
+            </div>
+            <div class="ttd-col">
+              <div style="font-size:12px;text-align:center;margin-bottom:48px;">Internal Inspektor</div>
+              <div style="font-size:12px;text-align:center;">( ........................................ )</div>
+            </div>
+          </div>
+
+          <!-- H. KEPUTUSAN ICS -->
+          <table class="tbl-ins">
+            <tbody>
+              <tr>
+                <td style="width:35%;">Pemenuhan tahun ini</td>
+                <td>
+                  <div class="check-row">
+                    <label><input type="checkbox"/> Menyetujui Tanpa Syarat</label>
+                    <label><input type="checkbox"/> Menyetujui Dengan Syarat</label>
+                    <label><input type="checkbox"/> Tidak Dapat Disetujui</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  Persyaratan tambahan atau sanksi :<br/>
+                  <textarea rows="2" style="width:100%;"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="height:60px;">
+                  Tanda tangan Manajer Persetujuan
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div><!-- /form-inspeksi -->
+        <div class="alert-success" id="alertInspeksi" style="margin-top:12px;">Data inspeksi berhasil disimpan!</div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script src="sidebar.js"></script>
+<script>
+  function tambahBaris() {
+    const tbody = document.getElementById('tbodyBidang');
+    const totalRow = tbody.querySelector('tr:last-child');
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td><td><input type="text"/></td>';
+    tbody.insertBefore(tr, totalRow);
+  }
+  function simpan() {
+    const p = document.getElementById('i_petani').value.trim();
+    if (!p) { alert('Nama Petani wajib diisi!'); return; }
+    showAlert('alertInspeksi');
+  }
+  function resetForm() {
+    if (!confirm('Reset semua isian?')) return;
+    document.querySelectorAll('.form-inspeksi input:not([type="radio"]):not([type="checkbox"]), .form-inspeksi textarea').forEach(el => el.value = '');
+    document.querySelectorAll('.form-inspeksi input[type="radio"], .form-inspeksi input[type="checkbox"]').forEach(el => el.checked = false);
+  }
+</script>
+
+</body>
+</html>

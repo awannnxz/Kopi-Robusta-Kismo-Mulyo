@@ -1,0 +1,259 @@
+/* ============================================================
+   pendataan.css — Khusus halaman pendataan.html
+   ============================================================ */
+
+/* ── KOP SURAT ── */
+.kop-surat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 2px;
+}
+.kop-logo {
+  flex-shrink: 0;
+  text-align: center;
+}
+.kop-logo img {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  display: block;
+}
+.kop-tengah {
+  flex: 1;
+  text-align: center;
+  line-height: 1.5;
+}
+.kop-nama {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+}
+.kop-full {
+  font-size: 12px;
+  color: #000;
+}
+.kop-alamat {
+  font-size: 11px;
+  color: #000;
+  margin-top: 2px;
+}
+.kop-kode {
+  font-size: 12px;
+  color: #000;
+  text-align: right;
+  white-space: nowrap;
+}
+.kop-kode input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  width: 80px;
+  background: transparent;
+  color: #000;
+}
+.kop-garis {
+  border-top: 2px solid #000;
+  margin: 6px 0 10px;
+}
+
+/* ── JUDUL FORM ── */
+.form-judul {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 2px;
+}
+.form-sub-judul {
+  font-size: 11px;
+  font-style: italic;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+/* ── TABEL IDENTITAS PETANI ── */
+.tbl-identitas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.tbl-identitas td {
+  border: 1px solid #000;
+  padding: 5px 8px;
+  vertical-align: top;
+  width: 50%;
+  color: #000;
+}
+.tbl-identitas .td-label {
+  font-weight: bold;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 2px;
+}
+.tbl-identitas input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+  padding: 1px 0;
+}
+
+/* ── INFO LAHAN & STATUS ── */
+.info-lahan {
+  border: 1px solid #000;
+  border-top: none;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #000;
+}
+.status-kepemilikan {
+  border: 1px solid #000;
+  border-top: none;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.status-kepemilikan input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+  flex: 1;
+}
+
+/* ── TABEL FORM UMUM ── */
+.tbl-form {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.tbl-form th {
+  border: 1px solid #000;
+  padding: 5px 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  background: #d9d9d9;
+}
+.tbl-form td {
+  border: 1px solid #000;
+  padding: 5px 6px;
+  vertical-align: middle;
+  color: #000;
+  height: 22px;
+}
+.tbl-form td input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+  text-align: center;
+}
+.tbl-form td input.left {
+  text-align: left;
+}
+
+/* ── HEADER KATEGORI abu-abu ── */
+.tbl-form th.cat-header {
+  background: #d9d9d9;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* ── TOMBOL TAMBAH BARIS ── */
+.btn-tambah-baris {
+  font-size: 11px;
+  padding: 3px 10px;
+  background: #f0f0f0;
+  border: 1px solid #999;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #000;
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+}
+
+/* ── TANDA TANGAN BAWAH ── */
+.ttd-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #000;
+  margin-top: 8px;
+  font-size: 12px;
+}
+.ttd-col {
+  padding: 10px 14px;
+  color: #000;
+  line-height: 1.7;
+}
+.ttd-col:first-child {
+  border-right: 1px solid #000;
+}
+.ttd-col .ttd-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+.ttd-col .ttd-row label {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.ttd-col .ttd-row input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+  flex: 1;
+}
+/* Label TTD di bawah - rata kiri, tanpa garis */
+.ttd-label-bawah {
+  margin-top: 48px;
+  font-size: 12px;
+  color: #000;
+}
+
+/* ── PRINT KERTAS F4 (21cm x 33cm) ── */
+@media print {
+  @page {
+    size: 21cm 33cm;
+    margin: 1.25cm 1.25cm;
+  }
+
+  .sidebar, .topbar, .btn-row,
+  .panel-head, .panel-daftar,
+  .btn-tambah-baris, .alert-success { display: none !important; }
+
+  body    { display: block !important; background: #fff !important; }
+  .main   { margin-left: 0 !important; }
+  .content { padding: 0 !important; margin: 0 !important; }
+
+  .panel      { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 0 !important; }
+
+  * { color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  input { border: none !important; background: transparent !important; }
+
+}

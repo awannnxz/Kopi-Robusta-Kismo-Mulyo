@@ -1,0 +1,114 @@
+/* ============================================================
+   catatan-usaha.css — Khusus halaman catatan-usaha.html
+   ============================================================ */
+
+/* ── KOP SURAT ── */
+.kop-surat {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding-bottom: 8px; margin-bottom: 2px;
+}
+.kop-logo { flex-shrink: 0; text-align: center; }
+.kop-logo img { width: 86px; height: 86px; object-fit: contain; display: block; }
+.kop-tengah { flex: 1; text-align: center; line-height: 1.5; }
+.kop-nama { font-size: 16px; font-weight: bold; color: #000; letter-spacing: 2px; }
+.kop-full { font-size: 12px; color: #000; }
+.kop-alamat { font-size: 11px; color: #000; margin-top: 2px; }
+.kop-garis { border-top: 2px solid #000; margin: 6px 0 10px; }
+
+/* ── JUDUL ── */
+.form-judul {
+  text-align: center; font-size: 13px;
+  font-weight: bold; color: #000; margin-bottom: 12px;
+}
+
+/* ── IDENTITAS ── */
+.tbl-identitas {
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.tbl-identitas td { padding: 2px 6px; color: #000; vertical-align: middle; }
+.tbl-identitas .id-label { width: 110px; }
+.tbl-identitas .id-titik { width: 10px; }
+.tbl-identitas input {
+  border: none;
+  outline: none; font-family: Arial, sans-serif;
+  font-size: 12px; width: 280px;
+  background: transparent; color: #000; padding: 1px 4px;
+}
+
+/* ── TABEL CATATAN ── */
+.tbl-catatan {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px; margin-bottom: 0;
+}
+
+/* Header - background kuning */
+.tbl-catatan thead tr th {
+  border: 1px solid #000;
+  padding: 5px 4px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  background: #ffff00;
+}
+
+/* Lebar kolom */
+.tbl-catatan .col-no   { width: 4%; }
+.tbl-catatan .col-uraian { width: 30%; }
+.tbl-catatan .col-tgl  { width: 12%; }
+.tbl-catatan .col-vol  { width: 10%; }
+.tbl-catatan .col-hrg  { width: 12%; }
+.tbl-catatan .col-tot  { width: 12%; }
+.tbl-catatan .col-ket  { width: 20%; }
+
+/* Semua td */
+.tbl-catatan tbody td {
+  border: 1px solid #000;
+  padding: 3px 4px;
+  vertical-align: middle;
+  color: #000;
+  font-size: 12px;
+  height: 20px;
+}
+.tbl-catatan tbody td.no { text-align: center; }
+.tbl-catatan tbody td.indent  { padding-left: 16px; }
+.tbl-catatan tbody td.indent2 { padding-left: 28px; }
+
+/* Input di dalam tabel */
+.tbl-catatan tbody td input[type="text"] {
+  border: none; outline: none; width: 100%;
+  font-family: Arial, sans-serif; font-size: 12px;
+  background: transparent; color: #000;
+}
+
+/* Baris Total - background kuning */
+.tbl-catatan tbody tr.row-total td {
+  background: #ffff00;
+  font-weight: bold;
+}
+
+/* Baris Total Panen - putih */
+.tbl-catatan tbody tr.row-putih td {
+  background: #ffffff;
+  font-weight: bold;
+}
+
+/* ── PRINT F4 ── */
+@media print {
+  @page { size: 21cm 33cm; margin: 1.25cm 1.25cm; }
+
+  .sidebar, .topbar, .btn-row,
+  .panel-head, .alert-success { display: none !important; }
+
+  body    { display: block !important; background: #fff !important; }
+  .main   { margin-left: 0 !important; }
+  .content { padding: 0 !important; margin: 0 !important; }
+  .panel  { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 0 !important; }
+
+  * { color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  input { border: none !important; background: transparent !important; }
+
+}

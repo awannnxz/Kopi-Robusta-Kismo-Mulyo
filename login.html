@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Aliansi Kopi Dan Polowijo Organik Boyolali</title>
+  <link rel="stylesheet" href="login.css"/>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <h1>KELOMPOK TANI KOPI "KISMO MULYO"</h1>
+    <a href="index.html">← Kembali ke Beranda</a>
+  </div>
+
+  <!-- BAND + FORM -->
+  <div class="band-wrap">
+    <div class="band">
+      <img class="band-img" src="Gambar2/kopi.jpeg" alt="Background"/>
+    </div>
+    <div class="card-wrap">
+      <div class="card">
+
+        <div class="card-title">— Login Sistem —</div>
+
+        <div class="field-row">
+          <label>Username :</label>
+          <input type="text" id="inp-user" autocomplete="username"/>
+        </div>
+        <div class="field-row">
+          <label>Password :</label>
+          <input type="password" id="inp-pass" autocomplete="current-password"/>
+        </div>
+
+        <button class="btn-login" onclick="doLogin()">Login</button>
+
+        <div class="err" id="errMsg">Username atau password salah!</div>
+        <div class="ok"  id="okMsg">Login berhasil! Mengalihkan...</div>
+
+        <a class="back-link" href="index.html">← Kembali ke Beranda</a>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const USERS = {
+      tanirobusta:'robusta123',
+    };
+
+    function doLogin() {
+      const u   = document.getElementById('inp-user').value.trim();
+      const p   = document.getElementById('inp-pass').value;
+      const err = document.getElementById('errMsg');
+      const ok  = document.getElementById('okMsg');
+
+      err.classList.remove('show');
+      ok.classList.remove('show');
+
+      if (USERS[u] && USERS[u] === p) {
+        ok.classList.add('show');
+        sessionStorage.setItem('user', u);
+        setTimeout(() => { window.location.href = 'kontrak.html'; }, 1200);
+      } else {
+        err.classList.add('show');
+        setTimeout(() => err.classList.remove('show'), 3000);
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+    });
+  </script>
+
+</body>
+</html>

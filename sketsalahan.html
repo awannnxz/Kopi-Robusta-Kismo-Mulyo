@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sketsa Lahan — KELOMPOK TANI KOPI "KISMO MULYO"</title>
+  <link rel="stylesheet" href="sidebar.css"/>
+  <link rel="stylesheet" href="sketsa-lahan2.css"/>
+  <style>
+  /* ditanam langsung supaya tetap tampil walau file CSS eksternal gagal ke-load */
+  .kop-surat { display:flex; align-items:flex-start; gap:14px; padding-bottom:8px; margin-bottom:2px; }
+  .kop-logo { flex-shrink:0; text-align:center; }
+  .kop-logo img { width:86px; height:86px; object-fit:contain; display:block; }
+  .kop-tengah { flex:1; text-align:center; line-height:1.5; }
+  .kop-nama { font-size:16px; font-weight:bold; color:#000; letter-spacing:2px; }
+  .kop-full { font-size:12px; color:#000; }
+  .kop-alamat { font-size:11px; color:#000; margin-top:2px; }
+  .kop-garis { border-top:2px solid #000; margin:6px 0 10px; }
+  .form-judul { text-align:center; font-size:13px; font-weight:bold; color:#000; margin-bottom:12px; }
+
+  .tbl-identitas { border-collapse:collapse; margin-bottom:14px; font-size:12px; }
+  .tbl-identitas td { padding:2px 6px; color:#000; vertical-align:middle; }
+  .tbl-identitas .id-label { width:110px; }
+  .tbl-identitas .id-titik { width:10px; }
+  .tbl-identitas input {
+    border:none; outline:none; font-family:Arial,sans-serif;
+    font-size:12px; width:280px; background:transparent; color:#000; padding:1px 4px;
+  }
+
+  .sketsa-wrap { position:relative; border-top:1px solid #000; padding-top:10px; }
+  .sketsa-jalan { text-align:center; font-size:12px; color:#000; margin-bottom:4px; }
+
+  .kompas {
+    position:absolute; top:-4px; right:0;
+    display:flex; flex-direction:column; align-items:center;
+    font-size:12px; font-weight:bold; color:#000;
+  }
+  .kompas .panah { font-size:20px; line-height:1; margin-top:2px; }
+
+  /* ── GRID BENTUK PLUS (+): Utara-Barat-Tengah-Timur-Selatan ── */
+  .sketsa-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 190px 190px 190px;
+    gap:6px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .sketsa-box {
+    border:1px solid #000; min-height:0;
+    display:flex; flex-direction:column;
+    padding:6px; box-sizing:border-box;
+    overflow:hidden;
+  }
+  .box-utara   { grid-column:2; grid-row:1; }
+  .box-barat   { grid-column:1; grid-row:2; }
+  .box-tengah  { grid-column:2; grid-row:2; background:#f3f3f3; }
+  .box-timur   { grid-column:3; grid-row:2; }
+  .box-selatan { grid-column:2; grid-row:3; }
+
+  .sketsa-box .sb-arah {
+    font-size:11px; font-weight:bold; color:#000; text-align:center; margin-bottom:4px;
+  }
+  .sketsa-box .sb-label {
+    font-size:11px; color:#000; display:flex; align-items:center; gap:4px; margin-bottom:6px; flex-wrap:wrap;
+  }
+  .sketsa-box .sb-label input {
+    border:none; border-bottom:1px solid #999; outline:none;
+    font-family:Arial,sans-serif; font-size:12px; flex:1; min-width:80px;
+    background:transparent; color:#000; padding:1px 2px;
+  }
+
+  /* Foto MENGISI PENUH kotak (di-crop, bukan foto yang nentuin ukuran kotak) */
+  .sketsa-foto {
+    flex:1; border:1px dashed #999; border-radius:4px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; background:#fafafa; min-height:0; position:relative;
+  }
+  .sketsa-foto img {
+    width:100%; height:100%;
+    object-fit:cover; object-position:center; display:block;
+  }
+  .sketsa-foto .sb-placeholder { font-size:11px; color:#999; text-align:center; padding:8px; }
+  .sketsa-box .sb-upload { margin-top:6px; }
+  .sketsa-box .sb-upload input[type="file"] { font-size:10px; width:100%; }
+  .sketsa-box .sb-err { font-size:10px; color:#c00; margin-top:2px; display:none; }
+
+  @media print {
+    @page { size:21cm 33cm; margin:1.25cm 1.25cm; }
+    .sidebar, .topbar, .btn-row, .panel-head, .panel-daftar, .alert-success, .sb-upload { display:none !important; }
+    body { display:block !important; background:#fff !important; }
+    .main { margin-left:0 !important; }
+    .content { padding:0 !important; margin:0 !important; }
+    .panel { border:none !important; box-shadow:none !important; margin:0 !important; }
+    .panel-body { padding:0 !important; }
+    .sketsa-grid { grid-template-rows: 170px 170px 170px; }
+    * { color:#000 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    input { border:none !important; background:transparent !important; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png"
+             style="width:42px;height:42px;object-fit:contain;" alt="padi"/>
+      </div>
+      <div>
+        <div class="logo-name">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+        <div class="logo-sub">Internal Control System Digital (ICS-D)</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="av">A</div>
+    <div>
+      <div class="uname" id="sbUser">Tani</div>
+      <div class="urole">Petani</div>
+    </div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-section-lbl">Pengimputan Data</div>
+    <a class="sb-item"           href="kontrak.html">      <span class="ic">1.</span> Kontrak</a>
+    <a class="sb-item"           href="petalahan.html">   <span class="ic">2.</span> Peta Lahan Petani</a>
+    <a class="sb-item"           href="pendataan.html">    <span class="ic">3.</span> Pendataan</a>
+    <a class="sb-item"           href="catatanusaha.html"><span class="ic">4.</span> Catatan Usaha</a>
+    <a class="sb-item"           href="inspeksi.html">     <span class="ic">5.</span> Inspeksi</a>
+    <div class="sb-item active" onclick="toggleSub(this,'sub-kelompok')">
+      <span class="ic">6.</span> Nama Kelompok
+      <span style="margin-left:auto;font-size:11px;" id="arr-kelompok">&#9660;</span>
+    </div>
+    <div class="sb-sub open" id="sub-kelompok">
+      <a class="sb-sub-item active" href="petalahan.html">Sketsa Lahan</a>
+      <a class="sb-sub-item" href="analisa.html">Analisa Risiko</a>
+    </div>
+  </div>
+  <div class="sb-footer">
+    <button class="btn-logout" onclick="logout()">Keluar</button>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+  <div class="topbar">
+    <h1>Sketsa Lahan Petani Individu</h1>
+    <div class="tb-right">
+      <span class="tb-date" id="tbDate"></span>
+      <a href="index.html" class="tb-back">Beranda</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button class="btn-secondary" onclick="resetForm()">Reset</button>
+      <button class="btn-secondary" onclick="window.print()">Cetak</button>
+      <button class="btn-primary"   onclick="simpan()">Simpan</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="form-sketsa">
+
+          <!-- KOP -->
+          <div class="kop-surat">
+            <div class="kop-logo">
+              <img src="Gambar2/Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo APPOLI"/>
+            </div>
+            <div class="kop-tengah">
+              <div class="kop-nama">Internal Control System Digital (ICS-D)</div>
+              <div class="kop-full">KELOMPOK TANI KOPI "KISMO MULYO"</div>
+              <div class="kop-alamat">
+                Dk. Jumapuro, Kwangsan, Jumapolo, Karanganyar<br>
+                Tel: - &nbsp; Email: -
+              </div>
+            </div>
+          </div>
+          <div class="kop-garis"></div>
+
+          <!-- JUDUL -->
+          <div class="form-judul"> &nbsp; SKETSA LAHAN PETANI INDIVIDU</div>
+
+          <!-- IDENTITAS -->
+          <table class="tbl-identitas">
+            <tr>
+              <td class="id-label">Nama</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="s_nama"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Kode Petani</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="s_kode" placeholder="APL/WT/SM/03"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Luas</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="s_luas"/></td>
+            </tr>
+            <tr>
+              <td class="id-label">Status Lahan</td>
+              <td class="id-titik">:</td>
+              <td><input type="text" id="s_status" placeholder="Milik / Sewa / Gadai"/></td>
+            </tr>
+          </table>
+
+          <!-- SKETSA 5 KOTAK (bentuk plus: tengah = patokan, dikelilingi 4 arah) -->
+          <div class="sketsa-wrap">
+            <div class="sketsa-jalan">Jalan</div>
+
+            <!-- KOMPAS -->
+            <div class="kompas">
+              U
+              <span class="panah">&#8593;</span>
+            </div>
+
+            <div class="sketsa-grid" id="sketsaGrid">
+              <!-- 5 kotak digenerate lewat JS agar rapi -->
+            </div>
+          </div>
+
+        </div><!-- /form-sketsa -->
+        <div class="alert-success" id="alertSketsa" style="margin-top:12px;">Data sketsa lahan berhasil disimpan!</div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script src="js/sidebar.js"></script>
+<script>
+  const MAX_FOTO_BYTES = 2 * 1024 * 1024; // 2MB
+
+  // Konfigurasi 5 kotak: tengah = patokan (cuma foto), 4 sisanya = arah mata angin
+  const kotakList = [
+    { id: 'utara',   arah: 'Utara',   posClass: 'box-utara',   adaNama: true  },
+    { id: 'barat',   arah: 'Barat',   posClass: 'box-barat',   adaNama: true  },
+    { id: 'tengah',  arah: 'Patokan', posClass: 'box-tengah',  adaNama: false },
+    { id: 'timur',   arah: 'Timur',   posClass: 'box-timur',   adaNama: true  },
+    { id: 'selatan', arah: 'Selatan', posClass: 'box-selatan', adaNama: true  },
+  ];
+
+  function buatGrid() {
+    const grid = document.getElementById('sketsaGrid');
+    grid.innerHTML = kotakList.map(k => `
+      <div class="sketsa-box ${k.posClass}">
+        <div class="sb-arah">${k.arah}</div>
+        ${k.adaNama ? `
+        <div class="sb-label">
+          Nama Pemilik :
+          <input type="text" id="box_${k.id}_nama"/>
+        </div>` : ''}
+        <div class="sketsa-foto" id="box_${k.id}_fotoWrap">
+          <div class="sb-placeholder">Belum ada foto</div>
+        </div>
+        <div class="sb-upload">
+          <input type="file" accept="image/*" id="box_${k.id}_file" onchange="uploadFoto('${k.id}', this)"/>
+          <div class="sb-err" id="box_${k.id}_err">Ukuran foto maksimal 2MB!</div>
+        </div>
+      </div>
+    `).join('');
+  }
+  buatGrid();
+
+  function uploadFoto(id, input) {
+    const errEl = document.getElementById(`box_${id}_err`);
+    errEl.style.display = 'none';
+
+    const file = input.files[0];
+    if (!file) return;
+
+    if (file.size > MAX_FOTO_BYTES) {
+      errEl.style.display = 'block';
+      input.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const wrap = document.getElementById(`box_${id}_fotoWrap`);
+      wrap.innerHTML = `<img src="${e.target.result}" alt="Foto ${id}"/>`;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function simpan() {
+    const nama = document.getElementById('s_nama').value.trim();
+    if (!nama) { alert('Nama wajib diisi!'); return; }
+    showAlert('alertSketsa');
+  }
+
+  function resetForm() {
+    if (!confirm('Reset semua isian dan foto?')) return;
+    document.querySelectorAll('.form-sketsa input[type="text"]').forEach(el => el.value = '');
+    document.querySelectorAll('.form-sketsa input[type="file"]').forEach(el => el.value = '');
+    kotakList.forEach(k => {
+      document.getElementById(`box_${k.id}_fotoWrap`).innerHTML = '<div class="sb-placeholder">Belum ada foto</div>';
+      document.getElementById(`box_${k.id}_err`).style.display = 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

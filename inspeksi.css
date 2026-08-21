@@ -1,0 +1,223 @@
+/* ============================================================
+   inspeksi.css — Khusus halaman inspeksi.html
+   ============================================================ */
+
+/* ── KOP SURAT ── */
+.kop-surat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 2px;
+}
+.kop-logo { flex-shrink: 0; text-align: center; }
+.kop-logo img { width: 86px; height: 86px; object-fit: contain; display: block; }
+.kop-tengah { flex: 1; text-align: center; line-height: 1.5; }
+.kop-nama { font-size: 16px; font-weight: bold; color: #000; letter-spacing: 2px; }
+.kop-full { font-size: 12px; color: #000; }
+.kop-alamat { font-size: 11px; color: #000; margin-top: 2px; }
+.kop-garis { border-top: 2px solid #000; margin: 6px 0 10px; }
+
+/* ── JUDUL ── */
+.form-judul {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+.form-sub-judul {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+/* ── TABEL HEADER IDENTITAS ── */
+.tbl-header {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.tbl-header td {
+  border: 1px solid #000;
+  padding: 4px 8px;
+  vertical-align: middle;
+  color: #000;
+}
+.tbl-header input {
+  border: none;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+}
+
+/* ── NOTE BOX ── */
+.note-box {
+  border: 1px solid #000;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+/* ── TABEL FORM UMUM ── */
+.tbl-ins {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.tbl-ins th {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  background: #d9d9d9;
+}
+.tbl-ins th.left { text-align: left; }
+.tbl-ins th.cat {
+  background: #d9d9d9;
+  text-align: left;
+  font-size: 12px;
+  font-weight: bold;
+}
+.tbl-ins td {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  vertical-align: middle;
+  color: #000;
+  font-size: 12px;
+  height: 22px;
+}
+.tbl-ins td input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+}
+.tbl-ins td.center { text-align: center; }
+.tbl-ins td input[type="checkbox"] {
+  width: auto;
+  accent-color: #000;
+  cursor: pointer;
+}
+.tbl-ins td input[type="radio"] {
+  width: auto;
+  accent-color: #000;
+  cursor: pointer;
+}
+
+/* ── RADIO INLINE ── */
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #000;
+  margin: 4px 0;
+  flex-wrap: wrap;
+}
+.radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* ── SECTION HEAD (strip abu-abu) ── */
+.sec-head {
+  background: #d9d9d9;
+  border: 1px solid #000;
+  border-bottom: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 6px;
+}
+
+/* ── TANDA TANGAN ── */
+.ttd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #000;
+  margin-top: 6px;
+  font-size: 12px;
+}
+.ttd-col {
+  padding: 10px 14px;
+  color: #000;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ttd-col:first-child { border-right: 1px solid #000; }
+.ttd-col .ttd-label-bawah {
+  font-size: 12px;
+  color: #000;
+  margin-top: 4px;
+  text-align: center;
+}
+.ttd-col .ttd-nama {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 4px;
+  margin-top: 48px;
+}
+
+/* checkbox group */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  flex-wrap: wrap;
+  margin: 4px 0;
+}
+.check-row label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* textarea di dalam tabel */
+.tbl-ins td textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background: transparent;
+  color: #000;
+  resize: none;
+  min-height: 40px;
+}
+
+/* ── PRINT F4 ── */
+@media print {
+  @page { size: 21cm 33cm; margin: 1.25cm 1.25cm; }
+
+  .sidebar, .topbar, .btn-row,
+  .panel-head, .panel-daftar,
+  .alert-success { display: none !important; }
+
+  body    { display: block !important; background: #fff !important; }
+  .main   { margin-left: 0 !important; }
+  .content { padding: 0 !important; margin: 0 !important; }
+  .panel  { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 0 !important; }
+
+  * { color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  input, textarea { border: none !important; background: transparent !important; }
+}

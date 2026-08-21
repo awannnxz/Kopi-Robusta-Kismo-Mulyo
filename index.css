@@ -1,0 +1,353 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #2d6a2d;
+  --green-dark:  #1a3d1a;
+  --green-light: #4caf50;
+  --gold:        #c8a84b;
+  --green-bg:    #f0f7f0;
+  --white:       #ffffff;
+  --text:        #222;
+  --muted:       #666;
+  --border:      #d4e8d4;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; color: var(--text); overflow-x: hidden; }
+
+/* ══════════════════════════════
+   NAVBAR
+══════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 62px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  min-width: 0; /* biar teks logo bisa dipotong/wrap di layar sempit, bukan dorong layout */
+}
+.nav-logo .logo-box {
+  width: 40px; height: 40px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.nav-logo .logo-name { font-size: 15px; font-weight: bold; color: #fff; line-height: 1.3; }
+.nav-logo .logo-sub  { font-size: 10px; color: rgba(255,255,255,0.45); display: block; }
+
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a {
+  color: rgba(255,255,255,0.8); text-decoration: none;
+  font-size: 13px; padding: 6px 14px; border-radius: 4px;
+  transition: color .2s, background .2s; letter-spacing: 0.3px;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-links a.active {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+  border-radius: 0;
+}
+.nav-links a.btn-login-nav {
+  background: var(--green); color: #fff;
+  border-radius: 4px; padding: 6px 18px; font-weight: bold;
+}
+.nav-links a.btn-login-nav:hover { background: var(--green-light); }
+
+/* Tombol hamburger — disembunyikan di desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px; height: 34px;
+  background: transparent; border: none; cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-toggle span {
+  display: block; width: 100%; height: 2px;
+  background: #fff; border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ══════════════════════════════
+   HOME / HERO
+══════════════════════════════ */
+#home {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+  overflow: hidden;
+}
+.home-bg-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.home-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.54);
+  z-index: 1;
+}
+#home > *:not(.home-bg-img):not(.home-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.hero-logos img {
+  height: 180px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+}
+
+.hero-title {
+font-size: clamp(30px, 6vw, 60px);   /* sebelumnya: clamp(52px, 8vw, 100px) */
+font-weight: 900; color: #fff; line-height: 1.1;
+text-transform: uppercase; letter-spacing: 2px;
+text-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.hero-abbr {
+font-size: clamp(28px, 2.2vw, 40px);
+font-weight: bold; color: rgba(255,255,255,0.75);
+letter-spacing: 4px; margin-top: 10px;
+}
+.hero-subtitle {
+  font-size: 25px; font-weight: bold;
+  color: rgba(255,255,255,0.75); margin-top: 12px; letter-spacing: 1px;
+}
+.hero-desc {
+  margin-top: 22px; font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  max-width: 580px; line-height: 1.8;
+}
+.btn-info {
+  display: inline-block; margin-top: 36px;
+  padding: 13px 38px;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff; font-size: 14px; text-decoration: none;
+  letter-spacing: 1px; transition: background .2s, border-color .2s;
+}
+.btn-info:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+/* ══════════════════════════════
+   SECTION HELPERS
+══════════════════════════════ */
+section { padding: 80px 60px; }
+.sec-label {
+  font-size: 11px; font-weight: bold; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--green-light); margin-bottom: 10px;
+}
+.sec-title { font-size: 30px; font-weight: bold; color: var(--text); margin-bottom: 18px; }
+.sec-divider { width: 48px; height: 3px; background: var(--gold); margin-bottom: 26px; }
+
+/* ══════════════════════════════
+   TENTANG
+══════════════════════════════ */
+#tentang { background: var(--white); }
+
+.tentang-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: center; max-width: 1060px; margin: 0 auto;
+}
+.tentang-img {
+  width: 100%; height: 340px; object-fit: cover;
+  border-radius: 6px; border-left: 5px solid var(--green);
+}
+.tentang-text p {
+  font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 12px;
+}
+.stats-row {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 28px;
+}
+.stat-box {
+  background: var(--green-bg); border-top: 3px solid var(--green);
+  padding: 18px 14px; text-align: center; border-radius: 4px;
+}
+.stat-box .snum { font-size: 26px; font-weight: bold; color: var(--green); }
+.stat-box .slbl { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* ══════════════════════════════
+   PRODUK
+══════════════════════════════ */
+#produk { background: var(--green-bg); }
+#produk .sec-title { text-align: center; }
+#produk .sec-label { text-align: center; }
+#produk .sec-divider { margin: 0 auto 32px; }
+
+.produk-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1100px; margin: 0 auto;
+}
+.produk-card {
+  background: #fff; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform .15s, box-shadow .15s;
+}
+.produk-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.produk-card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+.produk-card .pc-body { padding: 16px; }
+.produk-card .pc-name { font-size: 14px; font-weight: bold; color: var(--green); margin-bottom: 6px; }
+.produk-card .pc-desc { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.produk-card .pc-price { font-size: 15px; font-weight: bold; color: var(--green); margin-bottom: 12px; }
+.btn-beli {
+  display: block; width: 100%; padding: 9px;
+  background: var(--green); color: #fff; border: none; border-radius: 4px;
+  font-family: Arial, sans-serif; font-size: 13px; font-weight: bold;
+  cursor: pointer; transition: background .15s;
+}
+.btn-beli:hover { background: var(--green-light); }
+.alert-beli {
+  display: none; text-align: center; margin-top: 24px;
+  background: rgba(76,175,80,0.1); border: 1px solid #a5d6a7;
+  color: var(--green); padding: 12px; border-radius: 6px; font-size: 13px;
+  max-width: 440px; margin: 24px auto 0;
+}
+.alert-beli.show { display: block; }
+
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+#contact { background: #f5f5f5; }
+
+.contact-wrap {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;
+}
+.contact-info p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+.contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.contact-item .ci { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.contact-item .ct { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.contact-item .ct strong { color: var(--text); display: block; font-size: 13px; }
+
+.contact-form { display: flex; flex-direction: column; gap: 10px; }
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid #ccc; font-family: Arial, sans-serif;
+  font-size: 13px; outline: none; background: #fff;
+  transition: border-color .2s; border-radius: 4px;
+}
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--green); }
+.contact-form textarea { resize: vertical; min-height: 110px; }
+.btn-send {
+  padding: 11px; background: var(--green); color: #fff;
+  border: none; font-family: Arial, sans-serif; font-size: 14px;
+  font-weight: bold; cursor: pointer; transition: background .15s; border-radius: 4px;
+}
+.btn-send:hover { background: var(--green-light); }
+.alert-ok {
+  display: none; background: #e8f5e9; border: 1px solid #a5d6a7;
+  color: var(--green); padding: 10px 14px; border-radius: 4px; font-size: 13px;
+}
+.alert-ok.show { display: block; }
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  background: var(--green-dark); color: rgba(255,255,255,0.45);
+  text-align: center; padding: 20px; font-size: 12px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET & HP
+   Tampilan desktop di atas TIDAK diubah sama sekali.
+   Aturan di bawah ini cuma aktif kalau layar sempit.
+══════════════════════════════════════════════════════════ */
+
+/* ── Navbar jadi menu hamburger ── */
+@media (max-width: 860px) {
+  nav { padding: 0 16px; }
+  .nav-logo .logo-name { font-size: 12.5px; }
+  .nav-logo .logo-sub  { font-size: 9px; }
+
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 62px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(6px);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-links.open { max-height: 320px; }
+  .nav-links a {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0;
+    font-size: 14px;
+  }
+  .nav-links a.active { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links a.btn-login-nav {
+    margin: 10px 20px;
+    text-align: center;
+    border-radius: 6px;
+  }
+}
+
+/* ── Hero ── */
+@media (max-width: 640px) {
+  #home { padding: 90px 18px 50px; }
+  .hero-logos { gap: 14px; margin-bottom: 18px; }
+  .hero-logos img { height: 70px; }
+  .hero-title { font-size: clamp(22px, 8vw, 32px); letter-spacing: 1px; }
+  .hero-abbr { font-size: clamp(14px, 4vw, 18px); letter-spacing: 1.5px; }
+  .hero-desc { font-size: 13.5px; }
+  .btn-info { padding: 11px 26px; font-size: 13px; margin-top: 24px; }
+}
+
+/* ── Section spacing umum ── */
+@media (max-width: 768px) {
+  section { padding: 48px 20px; }
+  .sec-title { font-size: 22px; }
+}
+
+/* ── Tentang: 2 kolom → 1 kolom ── */
+@media (max-width: 768px) {
+  .tentang-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tentang-img { height: 220px; }
+  .stats-row { gap: 8px; }
+  .stat-box { padding: 12px 6px; }
+  .stat-box .snum { font-size: 20px; }
+}
+
+/* ── Produk: 4 kolom → 2 kolom → 1 kolom ── */
+@media (max-width: 900px) {
+  .produk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .produk-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Contact: 2 kolom → 1 kolom ── */
+@media (max-width: 768px) {
+  .contact-wrap { grid-template-columns: 1fr; gap: 30px; }
+}

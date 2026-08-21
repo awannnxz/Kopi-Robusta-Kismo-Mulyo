@@ -1,0 +1,117 @@
+/* ============================================================
+   peta-lahan.css — Khusus halaman peta-lahan.html
+   ============================================================ */
+
+/* ── KOP SURAT ── */
+.kop-surat {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding-bottom: 8px; margin-bottom: 2px;
+}
+.kop-logo { flex-shrink: 0; text-align: center; }
+.kop-logo img { width: 86px; height: 86px; object-fit: contain; display: block; }
+.kop-tengah { flex: 1; text-align: center; line-height: 1.5; }
+.kop-nama { font-size: 16px; font-weight: bold; color: #000; letter-spacing: 2px; }
+.kop-full { font-size: 12px; color: #000; }
+.kop-alamat { font-size: 11px; color: #000; margin-top: 2px; }
+.kop-garis { border-top: 2px solid #000; margin: 6px 0 10px; }
+
+/* ── JUDUL ── */
+.form-judul {
+  text-align: center; font-size: 13px;
+  font-weight: bold; color: #000; margin-bottom: 14px;
+}
+
+/* ── FORM INPUT KOORDINAT ── */
+.form-koordinat {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.fk-group { display: flex; flex-direction: column; gap: 4px; }
+.fk-group label {
+  font-size: 11px; font-weight: bold;
+  color: #000; text-transform: uppercase; letter-spacing: 1px;
+}
+.fk-group input, .fk-group select {
+  border: 1px solid #000; padding: 6px 10px;
+  font-family: Arial, sans-serif; font-size: 12px;
+  color: #000; outline: none; background: #fff;
+}
+.fk-group input:focus, .fk-group select:focus {
+  border-color: #2d6a2d;
+}
+
+.btn-tampilkan {
+  padding: 8px 20px;
+  background: #2d6a2d; color: #fff;
+  border: none; font-family: Arial, sans-serif;
+  font-size: 13px; font-weight: bold;
+  cursor: pointer; margin-bottom: 14px;
+}
+.btn-tampilkan:hover { background: #4caf50; }
+
+/* ── PETA ── */
+.peta-wrap {
+  width: 100%;
+  height: 380px;
+  border: 1px solid #000;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.peta-wrap iframe {
+  width: 100%; height: 100%; border: none;
+}
+
+/* ── KETERANGAN BAWAH PETA ── */
+.keterangan-peta {
+  font-size: 12px; color: #000;
+  line-height: 2;
+}
+.keterangan-peta .ket-row {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 2px;
+}
+.keterangan-peta .ket-label { min-width: 120px; font-size: 12px; }
+.keterangan-peta .ket-titik { font-size: 12px; }
+.keterangan-peta input {
+  border: none; border-bottom: 1px solid #555;
+  outline: none; font-family: Arial, sans-serif;
+  font-size: 12px; background: transparent;
+  color: #000; flex: 1; padding: 1px 4px;
+}
+
+/* ── TABEL DAFTAR LAHAN ── */
+.tbl-lahan {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px; margin-top: 16px;
+}
+.tbl-lahan th {
+  border: 1px solid #000; padding: 5px 8px;
+  background: #d9d9d9; font-size: 11px;
+  font-weight: bold; color: #000; text-align: center;
+}
+.tbl-lahan td {
+  border: 1px solid #000; padding: 5px 8px;
+  font-size: 12px; color: #000; vertical-align: middle;
+}
+
+/* ── PRINT F4 ── */
+@media print {
+  @page { size: 21cm 33cm; margin: 1.25cm 1.25cm; }
+
+  .sidebar, .topbar, .btn-row, .btn-tampilkan,
+  .panel-head, .panel-daftar,
+  .alert-success { display: none !important; }
+
+  body    { display: block !important; background: #fff !important; }
+  .main   { margin-left: 0 !important; }
+  .content { padding: 0 !important; margin: 0 !important; }
+  .panel  { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 0 !important; }
+  .form-koordinat { display: none !important; }
+
+  * { color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  input { border: none !important; background: transparent !important; }
+  .keterangan-peta input { border-bottom: 1px solid #000 !important; }
+}
