@@ -105,6 +105,11 @@
               <td><input type="text" id="k_kelompok"/></td>
             </tr>
             <tr>
+              <td class="td-label">Nama Petani</td>
+              <td class="td-titik">:</td>
+              <td><input type="text" id="p_petani"/></td>
+            </tr>
+            <tr>
               <td class="td-label">Alamat</td>
               <td class="td-titik">:</td>
               <td><input type="text" id="k_alamat"/></td>
@@ -229,7 +234,7 @@
   }
   function resetKontrak() {
     if (!confirm('Reset semua isian?')) return;
-    ['k_kelompok','k_alamat','k_no1','k_no2','k_tgl'].forEach(id => {
+    ['k_kelompok','p_petani','k_alamat','k_no1','k_no2','k_tgl'].forEach(id => {
       document.getElementById(id).value = '';
     });
   }
