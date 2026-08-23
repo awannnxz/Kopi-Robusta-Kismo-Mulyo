@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pertanian Indonesia</title>
+  <title>Kelompok Tani Kopi Kismo Mulyo</title>
   <link rel="stylesheet" href="index.css"/>
 </head>
 
@@ -89,7 +89,7 @@
       <div class="pc-body">
         <div class="pc-name">Kopi Robusta</div>
         <div class="pc-desc">Kopi Robusta yang diproduksi dengan sistem ramah lingkungan dengan konsep green agriculture.</div>
-        <button class="btn-beli" onclick="beli('Beras Putih', 'Rp 18.000/kg')">Beli Sekarang</button>
+        <button class="btn-beli" onclick="beli('Kopi Robusta', 'Rp -')">Beli Sekarang</button>
       </div>
     </div>
   </div>
@@ -126,18 +126,6 @@
 </footer>
 
 <script>
-  // Nomor WhatsApp Kopi Robusta (format internasional, tanpa tanda + / spasi)
-  const NOMOR_WA_APPOLI = '6285326991206';
-
-  function beli(namaProduk, harga) {
-    const pesan =
-      `Halo APPOLI, saya ingin bertanya:\n\n` +
-      `Apakah produk *${namaProduk}* (${harga}) masih tersedia / ready?\n\n` +
-      `Terima kasih.`;
-    const url = `https://wa.me/${NOMOR_WA_APPOLI}?text=${encodeURIComponent(pesan)}`;
-    window.open(url, '_blank');
-  }
-
   // ── Menu hamburger untuk HP/tablet ──
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
