@@ -243,6 +243,27 @@
     border: none !important;
     background: transparent !important;
   }
+
+  /* Hilangkan kotak border tanda tangan saat dicetak — cukup goresannya aja */
+  .sig-canvas {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  /* Jangan sampai area TTD kepotong ke halaman berikutnya */
+  .ttd-area, .ttd-grid, .ttd-col { page-break-inside: avoid; }
+
+  /* Rapetin jarak antar bagian biar muat 1 lembar */
+  .kop-surat      { padding-bottom: 4px; }
+  .kop-garis      { margin: 4px 0 8px; }
+  .daftar-isi     { margin-bottom: 6px; }
+  .daftar-isi li  { line-height: 1.4; margin-bottom: 2px; }
+  .penutup        { margin: 6px 0 10px; line-height: 1.4; }
+  .garis-tipis    { margin: 6px 0; }
+  .ttd-area       { margin-top: 10px; }
+  .ttd-kota       { margin-bottom: 10px; }
+  .sig-wrap       { margin: 0 auto 2px; }
+  .sig-canvas     { height: 80px !important; }
 }
 
 /* ══════════════════════════════════════════════
