@@ -78,7 +78,7 @@
           <!-- HEADER APPOLI -->
           <div class="kop-surat">
             <div class="kop-logo">
-              <img src="Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt="Logo KELOMPOK TANI "KISMO MULYO" KARANGANYAR"/>
+              <img src="Dark_Brown_Vintage_Retro_Coffee_Bean_Product_Badge_Logo__1_-removebg-preview.png" alt='Logo KELOMPOK TANI "KISMO MULYO" KARANGANYAR'/>
             </div>
             <div class="kop-tengah">
               <div class="kop-nama">Internal Control System Digital (ICS-D)</div>
@@ -160,7 +160,7 @@
             perjanjian ini berlaku 3 tahun sejak penandatanganan.
           </p>
 
-          <!-- TANDA TANGAN -->
+          <!-- TANDA TANGAN DIGITAL -->
           <div class="ttd-area">
             <div class="ttd-kota">
               Boyolali, <input type="date" id="k_tgl"/>
@@ -168,12 +168,18 @@
             <div class="ttd-grid">
               <div class="ttd-col">
                 <div class="ttd-jabatan">Manajer ICS</div>
-                <div class="ttd-ruang"></div>
+                <div class="sig-wrap">
+                  <canvas class="sig-canvas" id="sig_manajer" width="260" height="100"></canvas>
+                  <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_manajer')">Hapus TTD</button>
+                </div>
                 <div class="ttd-garis">______________________</div>
               </div>
               <div class="ttd-col">
                 <div class="ttd-jabatan">Petani</div>
-                <div class="ttd-ruang"></div>
+                <div class="sig-wrap">
+                  <canvas class="sig-canvas" id="sig_petani" width="260" height="100"></canvas>
+                  <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_petani')">Hapus TTD</button>
+                </div>
                 <div class="ttd-garis">______________________</div>
               </div>
             </div>
@@ -227,16 +233,57 @@
 
 <script src="sidebar.js"></script>
 <script>
+  // ══ TANDA TANGAN DIGITAL (canvas) ══
+  function initSigPad(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000';
+    let drawing = false, last = null;
+
+    function pos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const p = e.touches ? e.touches[0] : e;
+      return {
+        x: (p.clientX - rect.left) * (canvas.width / rect.width),
+        y: (p.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+    function start(e) { drawing = true; last = pos(e); e.preventDefault(); }
+    function move(e) {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+      last = p; e.preventDefault();
+    }
+    function end() { drawing = false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+  }
+  function clearSig(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  }
+  document.querySelectorAll('.sig-canvas').forEach(c => initSigPad(c.id));
+
   function simpanKontrak() {
     const k = document.getElementById('k_kelompok').value.trim();
     if (!k) { alert('Nama Kelompok wajib diisi!'); return; }
     showAlert('alertKontrak');
   }
   function resetKontrak() {
-    if (!confirm('Reset semua isian?')) return;
+    if (!confirm('Reset semua isian (termasuk tanda tangan)?')) return;
     ['k_kelompok','p_petani','k_alamat','k_no1','k_no2','k_tgl'].forEach(id => {
       document.getElementById(id).value = '';
     });
+    clearSig('sig_manajer');
+    clearSig('sig_petani');
   }
   function cariKontrak(q) {
     document.querySelectorAll('#tblKontrak tr').forEach(r => {
