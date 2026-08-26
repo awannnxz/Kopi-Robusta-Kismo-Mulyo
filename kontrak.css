@@ -197,8 +197,7 @@
   margin: 0 auto 6px;
 }
 .sig-canvas {
-  border: 1px solid #000;
-  border-radius: 4px;
+  border: none;
   background: #fff;
   display: block;
   max-width: 100%;
@@ -244,26 +243,30 @@
     background: transparent !important;
   }
 
-  /* Hilangkan kotak border tanda tangan saat dicetak — cukup goresannya aja */
+  /* Sudah tanpa border dari awal, tapi tetap pastikan bersih pas print */
   .sig-canvas {
-    border: none !important;
     background: transparent !important;
   }
 
   /* Jangan sampai area TTD kepotong ke halaman berikutnya */
   .ttd-area, .ttd-grid, .ttd-col { page-break-inside: avoid; }
 
-  /* Rapetin jarak antar bagian biar muat 1 lembar */
-  .kop-surat      { padding-bottom: 4px; }
-  .kop-garis      { margin: 4px 0 8px; }
-  .daftar-isi     { margin-bottom: 6px; }
-  .daftar-isi li  { line-height: 1.4; margin-bottom: 2px; }
-  .penutup        { margin: 6px 0 10px; line-height: 1.4; }
-  .garis-tipis    { margin: 6px 0; }
-  .ttd-area       { margin-top: 10px; }
-  .ttd-kota       { margin-bottom: 10px; }
+  /* Rapetin lagi jarak antar bagian biar muat 1 lembar */
+  .kop-surat      { padding-bottom: 2px; }
+  .kop-garis      { margin: 2px 0 6px; }
+  .daftar-isi     { margin-bottom: 4px; }
+  .daftar-isi li  { line-height: 1.25; margin-bottom: 1px; }
+  .penutup        { margin: 4px 0 6px; line-height: 1.25; }
+  .garis-tipis    { margin: 4px 0; }
+  .form-nomor     { margin-bottom: 4px; }
+  .form-sub, .form-manajer { margin-bottom: 2px; }
+  .form-dengan    { margin-bottom: 6px; }
+  .ttd-area       { margin-top: 6px; }
+  .ttd-kota       { margin-bottom: 6px; }
+  .ttd-jabatan    { margin-bottom: 4px; }
   .sig-wrap       { margin: 0 auto 2px; }
-  .sig-canvas     { height: 80px !important; }
+  .sig-canvas     { height: 55px !important; }
+  .ttd-garis      { padding-top: 2px; }
 }
 
 /* ══════════════════════════════════════════════
