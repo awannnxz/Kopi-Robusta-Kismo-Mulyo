@@ -172,7 +172,7 @@
                   <canvas class="sig-canvas" id="sig_manajer" width="240" height="80"></canvas>
                   <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_manajer')">Hapus TTD</button>
                 </div>
-                <div class="ttd-garis">______________________</div>
+                <input type="text" class="ttd-garis-input" id="k_nama_manajer" placeholder="Nama Manajer ICS"/>
               </div>
               <div class="ttd-col">
                 <div class="ttd-jabatan">Petani</div>
@@ -180,7 +180,7 @@
                   <canvas class="sig-canvas" id="sig_petani" width="240" height="80"></canvas>
                   <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_petani')">Hapus TTD</button>
                 </div>
-                <div class="ttd-garis">______________________</div>
+                <input type="text" class="ttd-garis-input" id="k_nama_petani" placeholder="Nama Petani"/>
               </div>
             </div>
           </div>
@@ -279,7 +279,7 @@
   }
   function resetKontrak() {
     if (!confirm('Reset semua isian (termasuk tanda tangan)?')) return;
-    ['k_kelompok','p_petani','k_alamat','k_no1','k_no2','k_tgl'].forEach(id => {
+    ['k_kelompok','p_petani','k_alamat','k_no1','k_no2','k_tgl','k_nama_manajer','k_nama_petani'].forEach(id => {
       document.getElementById(id).value = '';
     });
     clearSig('sig_manajer');
