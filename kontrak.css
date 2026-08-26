@@ -190,6 +190,22 @@
   color: #000;
   padding-top: 4px;
 }
+.ttd-garis-input {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  color: #000;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background: transparent;
+  padding: 2px 4px 3px;
+}
+.ttd-garis-input::placeholder { color: #888; font-style: italic; }
 
 /* ── TANDA TANGAN DIGITAL (canvas) ── */
 .sig-wrap {
@@ -242,6 +258,9 @@
     border: none !important;
     background: transparent !important;
   }
+  .ttd-garis-input {
+    border-bottom: 1px solid #000 !important;
+  }
 
   /* Sudah tanpa border dari awal, tapi tetap pastikan bersih pas print */
   .sig-canvas {
@@ -267,6 +286,7 @@
   .sig-wrap       { margin: 0 auto 2px; }
   .sig-canvas     { height: 55px !important; }
   .ttd-garis      { padding-top: 2px; }
+  .ttd-garis-input { padding: 1px 2px 2px; }
 }
 
 /* ══════════════════════════════════════════════
