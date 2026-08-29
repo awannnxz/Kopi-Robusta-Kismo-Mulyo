@@ -326,15 +326,23 @@
             </tbody>
           </table>
 
-          <!-- TTD INSPEKTOR -->
+          <!-- TTD INSPEKTOR (DIGITAL) -->
           <div class="ttd-grid">
             <div class="ttd-col">
-              <div style="font-size:12px;text-align:center;margin-bottom:48px;">Petani</div>
-              <div style="font-size:12px;text-align:center;">( ........................................ )</div>
+              <div style="font-size:12px;text-align:center;margin-bottom:6px;">Petani</div>
+              <div class="sig-wrap">
+                <canvas class="sig-canvas" id="sig_petani_insp" width="200" height="70"></canvas>
+                <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_petani_insp')">Hapus TTD</button>
+              </div>
+              <input type="text" class="ttd-nama-input" id="i_nama_petani" placeholder="Nama Petani"/>
             </div>
             <div class="ttd-col">
-              <div style="font-size:12px;text-align:center;margin-bottom:48px;">Internal Inspektor</div>
-              <div style="font-size:12px;text-align:center;">( ........................................ )</div>
+              <div style="font-size:12px;text-align:center;margin-bottom:6px;">Internal Inspektor</div>
+              <div class="sig-wrap">
+                <canvas class="sig-canvas" id="sig_inspektor" width="200" height="70"></canvas>
+                <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_inspektor')">Hapus TTD</button>
+              </div>
+              <input type="text" class="ttd-nama-input" id="i_nama_inspektor" placeholder="Nama Inspektor"/>
             </div>
           </div>
 
@@ -358,8 +366,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="height:60px;">
+                <td colspan="2" style="padding:8px;">
                   Tanda tangan Manajer Persetujuan
+                  <div class="sig-wrap" style="margin-top:6px;">
+                    <canvas class="sig-canvas" id="sig_manajer_insp" width="240" height="70"></canvas>
+                    <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_manajer_insp')">Hapus TTD</button>
+                  </div>
+                  <input type="text" class="ttd-nama-input" id="i_nama_manajer" placeholder="Nama Manajer" style="margin:0;"/>
                 </td>
               </tr>
             </tbody>
@@ -375,6 +388,45 @@
 
 <script src="sidebar.js"></script>
 <script>
+  // ══ TANDA TANGAN DIGITAL (canvas) ══
+  function initSigPad(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000';
+    let drawing = false, last = null;
+
+    function pos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const p = e.touches ? e.touches[0] : e;
+      return {
+        x: (p.clientX - rect.left) * (canvas.width / rect.width),
+        y: (p.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+    function start(e) { drawing = true; last = pos(e); e.preventDefault(); }
+    function move(e) {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+      last = p; e.preventDefault();
+    }
+    function end() { drawing = false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+  }
+  function clearSig(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  }
+  document.querySelectorAll('.sig-canvas').forEach(c => initSigPad(c.id));
+
   function tambahBaris() {
     const tbody = document.getElementById('tbodyBidang');
     const totalRow = tbody.querySelector('tr:last-child');
@@ -388,9 +440,12 @@
     showAlert('alertInspeksi');
   }
   function resetForm() {
-    if (!confirm('Reset semua isian?')) return;
+    if (!confirm('Reset semua isian (termasuk tanda tangan)?')) return;
     document.querySelectorAll('.form-inspeksi input:not([type="radio"]):not([type="checkbox"]), .form-inspeksi textarea').forEach(el => el.value = '');
     document.querySelectorAll('.form-inspeksi input[type="radio"], .form-inspeksi input[type="checkbox"]').forEach(el => el.checked = false);
+    clearSig('sig_petani_insp');
+    clearSig('sig_inspektor');
+    clearSig('sig_manajer_insp');
   }
 </script>
 
