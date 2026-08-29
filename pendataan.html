@@ -276,7 +276,7 @@
             </tbody>
           </table>
 
-          <!-- TANDA TANGAN -->
+          <!-- TANDA TANGAN DIGITAL -->
           <div class="ttd-bottom">
             <div class="ttd-col">
               Saya, selaku petani, menyatakan bahwa informasi ini adalah benar dan saya telah
@@ -285,6 +285,11 @@
               <div class="ttd-row"><label>Tanggal :</label><input type="text" id="p_tgl"/></div>
               <div class="ttd-row"><label>Tempat &nbsp;:</label><input type="text" id="p_tempat"/></div>
               <div class="ttd-label-bawah">Tanda Tangan Petani:</div>
+              <div class="sig-wrap">
+                <canvas class="sig-canvas" id="sig_petani" width="220" height="70"></canvas>
+                <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_petani')">Hapus TTD</button>
+              </div>
+              <input type="text" class="ttd-nama-input" id="p_nama_ttd_petani" placeholder="Nama Petani"/>
             </div>
             <div class="ttd-col" style="display:flex;flex-direction:column;justify-content:space-between;">
               <div>
@@ -292,7 +297,14 @@
                 adalah benar.
                 <div class="ttd-row"><label>Tanggal :</label><input type="text" id="p_tgl2"/></div>
               </div>
-              <div style="font-size:12px;color:#000;">Tanda Tangan Petugas Lapang ICS</div>
+              <div>
+                <div style="font-size:12px;color:#000;">Tanda Tangan Petugas Lapang ICS</div>
+                <div class="sig-wrap">
+                  <canvas class="sig-canvas" id="sig_petugas" width="220" height="70"></canvas>
+                  <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_petugas')">Hapus TTD</button>
+                </div>
+                <input type="text" class="ttd-nama-input" id="p_nama_ttd_petugas" placeholder="Nama Petugas Lapang"/>
+              </div>
             </div>
           </div>
 
@@ -344,6 +356,45 @@
 
 <script src="sidebar.js"></script>
 <script>
+  // ══ TANDA TANGAN DIGITAL (canvas) ══
+  function initSigPad(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000';
+    let drawing = false, last = null;
+
+    function pos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const p = e.touches ? e.touches[0] : e;
+      return {
+        x: (p.clientX - rect.left) * (canvas.width / rect.width),
+        y: (p.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+    function start(e) { drawing = true; last = pos(e); e.preventDefault(); }
+    function move(e) {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+      last = p; e.preventDefault();
+    }
+    function end() { drawing = false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+  }
+  function clearSig(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  }
+  document.querySelectorAll('.sig-canvas').forEach(c => initSigPad(c.id));
+
   function tambahBaris(tbodyId, kolom) {
     const tbody = document.getElementById(tbodyId);
     const tr = document.createElement('tr');
@@ -362,8 +413,10 @@
   }
 
   function resetForm() {
-    if (!confirm('Reset semua isian?')) return;
+    if (!confirm('Reset semua isian (termasuk tanda tangan)?')) return;
     document.querySelectorAll('.form-pendataan input').forEach(el => el.value = '');
+    clearSig('sig_petani');
+    clearSig('sig_petugas');
   }
 
   function cari(q) {
