@@ -157,10 +157,6 @@
   padding: 10px 14px;
   color: #000;
   line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   text-align: center;
 }
 .ttd-col:first-child { border-right: 1px solid #000; }
@@ -206,12 +202,10 @@
   min-height: 40px;
 }
 
-/* ── TANDA TANGAN DIGITAL (canvas) ── */
+/* ── TANDA TANGAN DIGITAL (canvas) — pola sama persis dgn kontrak.css ── */
 .sig-wrap {
-  margin: 4px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-block;
+  margin: 0 auto 4px;
 }
 .sig-canvas {
   border: none;
@@ -238,7 +232,8 @@
 }
 .ttd-nama-input::placeholder { color: #888; font-style: italic; }
 .btn-sig-clear {
-  margin-top: 4px;
+  display: block;
+  margin: 4px auto 0;
   font-size: 11px;
   padding: 3px 12px;
   background: #f0f0f0;
