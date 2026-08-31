@@ -368,12 +368,13 @@
               <tr>
                 <td colspan="2" style="padding:8px;">
                   Tanda tangan Manajer Persetujuan
-                  <div style="text-align:center;">
-                    <div class="sig-wrap" style="margin-top:6px;">
-                      <canvas class="sig-canvas" id="sig_manajer_insp" width="240" height="70"></canvas>
-                      <button type="button" class="btn-sig-clear no-print" onclick="clearSig('sig_manajer_insp')">Hapus TTD</button>
-                    </div>
-                    <input type="text" class="ttd-nama-input" id="i_nama_manajer" placeholder="Nama Manajer"/>
+                  <div style="text-align:center;margin-top:6px;">
+                    <canvas class="sig-canvas" id="sig_manajer_insp" width="240" height="70"
+                      style="display:block;margin:0 auto;border:none;background:#fff;touch-action:none;cursor:crosshair;"></canvas>
+                    <button type="button" class="no-print" onclick="clearSig('sig_manajer_insp')"
+                      style="display:block;margin:4px auto 0;font-size:11px;padding:3px 12px;background:#f0f0f0;border:1px solid #999;border-radius:4px;cursor:pointer;color:#000;font-family:Arial,sans-serif;">Hapus TTD</button>
+                    <input type="text" id="i_nama_manajer" placeholder="Nama Manajer"
+                      style="display:block;width:200px;max-width:90%;margin:4px auto 0;text-align:center;font-size:12px;font-family:Arial,sans-serif;color:#000;border:none;border-bottom:1px solid #000;outline:none;background:transparent;padding:2px 4px 3px;"/>
                   </div>
                 </td>
               </tr>
